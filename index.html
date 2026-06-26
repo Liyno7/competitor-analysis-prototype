@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>跨境业务系统原型 v37 — 竞品监控融合版</title>
+<style>
+:root{--bg:#f6f8fb;--card:#fff;--line:#e5e7eb;--text:#111827;--muted:#6b7280;--blue:#1677ff;--blue2:#eef5ff;--red:#ef4444;--orange:#f59e0b;--green:#10b981;--violet:#5b21b6;--teal:#0d9488;--shadow:0 6px 18px rgba(15,23,42,.06);--bg-alt:#f9fafb;--bg-card:#fbfdff;--line-light:#dbeafe;--red-bg:#fee2e2;--red-text:#b91c1c;--orange-bg:#fef3c7;--orange-text:#92400e;--green-bg:#dcfce7;--green-text:#166534;--blue-bg:#dbeafe;--blue-text:#1d4ed8;--tag-bg:#f3f4f6;--tag-text:#374151;--nav-text:#374151;--nav-child:#4b5563;--border-subtle:#eef2f7;--stat-red-bg:#fef2f2;--stat-orange-bg:#fff7ed;--stat-green-bg:#f0fdf4}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif}.app{display:flex;min-height:100vh}.side{position:fixed;inset:0 auto 0 0;width:232px;background:#fff;border-right:1px solid var(--line);z-index:4}.brand{display:none}.nav-title{margin:18px 18px 8px;color:#9ca3af;font-size:12px}.system-title{margin:12px 12px 6px;padding:10px 12px;border-radius:12px;font-weight:900;color:#111827;background:#f9fafb;border:1px solid #eef2f7}.system-title.on{background:#eef5ff;color:#1677ff;border-color:#dbeafe}.nav{display:flex;gap:8px;align-items:center;margin:4px 12px;padding:10px 12px;border-radius:12px;cursor:pointer;color:#374151;font-weight:700}.nav.child{margin-left:22px;padding:9px 10px;font-weight:700;color:#4b5563}.nav:hover{background:#f3f4f6}.nav.on{background:var(--blue2);color:var(--blue)}.ico{width:24px;height:24px;border-radius:8px;background:#f3f4f6;display:grid;place-items:center;font-size:12px}.nav.on .ico{background:#dbeafe}.main{margin-left:232px;width:calc(100% - 232px);min-width:0}.top{height:58px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:sticky;top:0;z-index:3}.top-left{display:flex;align-items:center;gap:18px}.top-nav{display:flex;align-items:center;gap:4px}.top-item{padding:9px 14px;border-radius:12px;font-weight:900;color:#4b5563;cursor:pointer}.top-item:hover{background:#f3f4f6}.top-item.on{background:#111827;color:#fff}.crumb{font-weight:800;color:#374151}.top-r{display:flex;gap:10px;align-items:center}.search input{width:280px;border:1px solid var(--line);border-radius:10px;padding:9px 12px}.avatar{width:34px;height:34px;border-radius:50%;background:#111827;color:#fff;display:grid;place-items:center;font-weight:800}.page{padding:22px}.sec{display:none}.sec.on{display:block}.title{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}.title h1{margin:0;font-size:28px}.title p{margin:6px 0 0;color:var(--muted)}.btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 13px;font-weight:800;cursor:pointer;white-space:nowrap}.btn:hover{box-shadow:var(--shadow)}.primary{background:var(--blue);border-color:var(--blue);color:#fff}.dark{background:#111827;border-color:#111827;color:#fff}.small{padding:5px 8px;border-radius:8px;font-size:12px}.filters{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px;box-shadow:var(--shadow)}.field{display:flex;align-items:center;gap:7px;background:#f9fafb;border:1px solid var(--line);border-radius:10px;padding:8px 10px}.field label{color:var(--muted);font-size:12px}select,input{border:0;background:transparent;outline:none;font-weight:700;min-width:86px}.range input{width:55px;min-width:55px;text-align:center}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:16px}.card,.table-card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}.table-card{overflow:hidden}.card{padding:18px}.label{color:var(--muted);font-size:13px}.num{font-size:32px;font-weight:900;margin:6px 0}.kw{font-size:16px;line-height:1.7;font-weight:900;margin-top:8px;color:#111827}.foot{font-size:12px;color:var(--muted)}.red{color:var(--red)}.green{color:var(--green)}.orange{color:var(--orange)}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}.st{font-size:16px;font-weight:900;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}.bars{height:230px;display:flex;align-items:flex-end;gap:18px;padding:14px 18px 10px;border-left:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(to bottom,#f9fafb 1px,transparent 1px);background-size:100% 44px}.barcol{flex:1;text-align:center;color:var(--muted);font-size:12px}.bar{width:36px;margin:6px auto 8px;border-radius:10px 10px 4px 4px;background:linear-gradient(180deg,#60a5fa,#1677ff);position:relative}.bar.warn{background:linear-gradient(180deg,#f87171,#ef4444)}.bar:hover:after{content:attr(data-tip);white-space:pre-line;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#111827;color:#fff;padding:7px 9px;border-radius:8px;text-align:left;min-width:150px;z-index:5}.list{display:flex;flex-direction:column;gap:11px}.list-row{display:grid;grid-template-columns:88px 1fr 44px;gap:10px;align-items:center;font-weight:800}.prog{height:8px;background:#f3f4f6;border-radius:999px;overflow:hidden}.prog i{display:block;height:100%;border-radius:999px;background:var(--blue)}.prog i.r{background:var(--red)}.prog i.o{background:var(--orange)}.prog i.g{background:var(--green)}.prog i.p{background:var(--violet)}.table-head{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse}th,td{border-bottom:1px solid var(--line);padding:11px 10px;text-align:left;vertical-align:middle}th{font-size:12px;color:var(--muted);background:#fbfdff;white-space:nowrap}td{font-size:13px}.wide{min-width:1600px}.tag{display:inline-flex;border-radius:999px;padding:4px 8px;font-size:12px;font-weight:800;background:#f3f4f6;color:#374151;margin:2px}.tag.r{background:#fee2e2;color:#b91c1c}.tag.o{background:#fef3c7;color:#92400e}.tag.g{background:#dcfce7;color:#166534}.tag.b{background:#dbeafe;color:#1d4ed8}.tag.p{background:#ede9fe;color:#5b21b6}.risk{font-weight:900}.risk.高{color:var(--red)}.risk.中{color:var(--orange)}.risk.低{color:var(--green)}.pic{width:40px;height:40px;border-radius:9px;background:linear-gradient(135deg,#ddd6ca,#9b795b);display:grid;place-items:center;color:#fff;font-weight:900}.p2{background:linear-gradient(135deg,#d7e1ea,#7d92aa)}.p3{background:linear-gradient(135deg,#ede9d5,#b59a64)}.p4{background:linear-gradient(135deg,#e5ded4,#8f6b56)}a{color:var(--blue);font-weight:900;text-decoration:none;cursor:pointer}
+.drawer{position:fixed;right:-820px;top:0;bottom:0;width:820px;max-width:calc(100vw - 40px);background:#fff;box-shadow:-18px 0 40px rgba(0,0,0,.14);z-index:20;transition:.25s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column}.drawer.open{right:0}.dh{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-start;flex-shrink:0}.db{padding:20px;overflow-y:auto;flex:1}.x{border:0;background:#f3f4f6;width:34px;height:34px;border-radius:10px;font-size:18px;cursor:pointer}.x:hover{background:#e5e7eb}.mask{position:fixed;inset:0;background:rgba(17,24,39,.28);display:none;z-index:15}.mask.show{display:block}.box{border:1px solid #dbeafe;background:#f8fbff;border-radius:14px;padding:13px;margin:12px 0}.quote{border-left:4px solid var(--blue);background:#f9fafb;border-radius:10px;padding:10px;margin:8px 0;line-height:1.65}.kv{display:grid;grid-template-columns:92px 1fr;gap:10px;border-bottom:1px dashed #e5e7eb;padding:9px 0}.toast{position:fixed;right:24px;bottom:24px;background:#111827;color:#fff;padding:12px 16px;border-radius:12px;box-shadow:var(--shadow);opacity:0;transform:translateY(8px);transition:.18s;z-index:30}.toast.show{opacity:1;transform:none}.modal{position:fixed;inset:0;background:rgba(17,24,39,.35);z-index:25;display:none;place-items:center}.modal.show{display:grid}.modal-card{width:720px;max-width:calc(100vw - 40px);background:#fff;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}.mh{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}.mb{padding:18px}.textarea{width:100%;min-height:105px;border:1px solid var(--line);border-radius:12px;padding:12px;outline:none;font-family:inherit}.upload{border:2px dashed #bfdbfe;background:#eff6ff;border-radius:16px;padding:28px;text-align:center;color:#1d4ed8;font-weight:800}
+.mstat{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:8px;font-size:12px;font-weight:800}.mstat.unchanged{background:#f0fdf4;color:#166534}.mstat.changed-recent{background:#fff7ed;color:#9a3412}.mstat.changed-today{background:#fef2f2;color:#991b1b}.mstat .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}.mstat.unchanged .dot{background:#22c55e}.mstat.changed-recent .dot{background:#f97316}.mstat.changed-today .dot{background:#ef4444}
+.history-filters{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}.hf-btn{padding:6px 14px;border-radius:20px;border:1px solid var(--line);background:#fff;font-size:13px;font-weight:700;cursor:pointer;color:#4b5563;transition:.15s}.hf-btn:hover{border-color:#93c5fd}.hf-btn.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.timeline{position:relative;padding-left:24px}.timeline::before{content:'';position:absolute;left:7px;top:4px;bottom:4px;width:2px;background:#e5e7eb;border-radius:2px}.tl-item{position:relative;padding:0 0 20px 0}.tl-item:last-child{padding-bottom:0}.tl-dot{position:absolute;left:-20px;top:6px;width:12px;height:12px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 2px var(--blue)}.tl-dot.price{background:var(--blue)}.tl-dot.title{background:var(--violet)}.tl-dot.bullet{background:var(--orange)}.tl-dot.image{background:#06b6d4}.tl-dot.rating{background:var(--green)}.tl-dot.reviews{background:var(--violet)}.tl-time{font-size:12px;color:var(--muted);margin-bottom:4px}.tl-field{font-weight:800;font-size:14px;margin-bottom:6px;display:flex;align-items:center;gap:6px}.tl-diff{display:flex;gap:8px;align-items:flex-start;font-size:13px}.tl-old{background:#fef2f2;color:#991b1b;padding:4px 8px;border-radius:8px;flex:1;word-break:break-all;line-height:1.5}.tl-new{background:#f0fdf4;color:#166534;padding:4px 8px;border-radius:8px;flex:1;word-break:break-all;line-height:1.5}.tl-arrow{color:var(--muted);font-size:16px;flex-shrink:0;margin-top:2px}
+.log-list{display:flex;flex-direction:column;gap:10px}.log-item{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:#fafbfc;transition:.15s}.log-item:hover{border-color:#93c5fd;background:#f8fbff}.log-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.log-status{font-weight:800;font-size:13px;display:flex;align-items:center;gap:6px}.log-status .ldot{width:8px;height:8px;border-radius:50%}.log-status .ldot.ok{background:var(--green)}.log-status .ldot.fail{background:var(--red)}.log-status .ldot.pending{background:var(--orange)}.log-meta{display:flex;gap:16px;font-size:12px;color:var(--muted)}.log-detail{display:flex;gap:20px;font-size:13px;margin-top:6px;padding-top:8px;border-top:1px dashed var(--line)}
+.tab-bar{display:flex;gap:0;margin-bottom:16px;border-bottom:2px solid var(--line)}.tab-item{padding:10px 20px;font-weight:800;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:.15s}.tab-item:hover{color:var(--text)}.tab-item.on{color:var(--blue);border-bottom-color:var(--blue)}
+.pd-section{margin-bottom:24px}.pd-section-title{font-size:16px;font-weight:900;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.pd-product-title{font-size:17px;font-weight:800;line-height:1.6;padding:14px 16px;background:#f8fbff;border:1px solid var(--line-light);border-radius:12px;margin-bottom:16px}
+.pd-bullet-list{list-style:none;padding:0;margin:0}.pd-bullet-list li{position:relative;padding:10px 14px 10px 26px;border-bottom:1px dashed var(--line);font-size:14px;line-height:1.65}.pd-bullet-list li:last-child{border-bottom:0}.pd-bullet-list li::before{content:'';position:absolute;left:12px;top:18px;width:6px;height:6px;border-radius:50%;background:var(--blue)}
+.pd-price-row{display:flex;gap:20px;align-items:center;padding:14px 16px;background:#f9fafb;border:1px solid var(--line);border-radius:12px;margin-bottom:16px}.pd-price{font-size:24px;font-weight:900;color:var(--red)}.pd-rating{font-size:15px;font-weight:800;display:flex;align-items:center;gap:6px}
+.pd-review-card{border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:14px;background:#fafbfc;transition:.15s}.pd-review-card:hover{border-color:#93c5fd;box-shadow:var(--shadow)}.pd-review-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px}.pd-reviewer-avatar{width:36px;height:36px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:900;font-size:14px;flex-shrink:0}.pd-reviewer-info{flex:1}.pd-reviewer-name{font-weight:800;font-size:14px}.pd-reviewer-meta{font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center;margin-top:2px}.pd-review-stars{color:#f59e0b;font-size:14px;letter-spacing:1px}.pd-review-title{font-weight:800;font-size:15px;margin:8px 0 6px}.pd-review-body{font-size:14px;line-height:1.7;color:#374151;margin-bottom:8px;white-space:pre-line}.pd-review-images{display:flex;gap:8px;margin:10px 0;flex-wrap:wrap}.pd-review-img{width:72px;height:72px;border-radius:10px;background:linear-gradient(135deg,#e8ddd0,#b09a82);display:grid;place-items:center;color:#fff;font-size:11px;font-weight:800;cursor:pointer;transition:.15s;border:2px solid transparent}.pd-review-img:hover{border-color:var(--blue);transform:scale(1.05)}.pd-review-img.p2{background:linear-gradient(135deg,#d7e1ea,#7d92aa)}.pd-review-img.p3{background:linear-gradient(135deg,#ede9d5,#b59a64)}.pd-review-img.p4{background:linear-gradient(135deg,#e5ded4,#8f6b56)}.pd-helpful{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;padding-top:8px;border-top:1px dashed var(--line)}.pd-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:8px;font-size:11px;font-weight:800}.pd-badge.verified{background:#dcfce7;color:#166534}.pd-badge.variant{background:#f3f4f6;color:#374151}
+.tip-wrap{position:relative}.tip-wrap:hover .tip-text{display:block}.tip-text{display:none;position:absolute;bottom:calc(100% + 6px);left:0;background:#111827;color:#fff;padding:10px 12px;border-radius:10px;font-size:12px;line-height:1.55;width:320px;z-index:10;box-shadow:0 8px 20px rgba(0,0,0,.22);font-weight:400;max-height:200px;overflow-y:auto;white-space:normal;word-break:break-word}.tip-text::after{content:'';position:absolute;top:100%;left:20px;border:6px solid transparent;border-top-color:#111827}
+.thumb{width:64px;height:64px;border-radius:10px;background:linear-gradient(135deg,#e8ddd0,#b09a82);display:grid;place-items:center;color:#fff;font-size:11px;font-weight:800;cursor:pointer;transition:.15s;border:2px solid transparent;flex-shrink:0}.thumb:hover{border-color:var(--blue);transform:scale(1.05)}.thumb.p2{background:linear-gradient(135deg,#d7e1ea,#7d92aa)}.thumb.p3{background:linear-gradient(135deg,#ede9d5,#b59a64)}.thumb.p4{background:linear-gradient(135deg,#e5ded4,#8f6b56)}
+.tl-dot.attrs{background:#0891b2}
+.pd-attr-table{width:100%;border-collapse:collapse;border:1px solid var(--line);border-radius:12px;overflow:hidden}.pd-attr-table tr{border-bottom:1px solid var(--line)}.pd-attr-table tr:last-child{border-bottom:0}.pd-attr-table td{padding:10px 14px;font-size:14px}.pd-attr-table td:first-child{color:var(--muted);font-weight:700;width:160px;background:#f9fafb;white-space:nowrap}.pd-attr-table td:last-child{font-weight:600}
+.empty-state{text-align:center;padding:48px 20px;color:var(--muted)}.empty-state .empty-icon{font-size:48px;margin-bottom:12px;opacity:.3}.empty-state p{margin:4px 0;font-size:14px}
+.product-modal{position:fixed;inset:0;z-index:25;display:none;place-items:center}.product-modal.show{display:grid}.product-modal>.mask-bg{position:absolute;inset:0;background:rgba(17,24,39,.35)}.product-modal-card{position:relative;width:90vw;max-width:880px;max-height:90vh;background:#fff;border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.18);overflow:hidden;display:flex;flex-direction:column;animation:pmFadeIn .2s ease}.product-modal-card .dh{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-start;flex-shrink:0}.product-modal-card .db{padding:20px;overflow-y:auto;flex:1}@keyframes pmFadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(max-width:1200px){.grid2,.cards{grid-template-columns:1fr}.side{width:72px}.system-title{font-size:0;padding:10px 8px}.system-title:after{content:'业务';font-size:13px}.nav span,.nav-title{display:none}.nav.child{margin-left:12px}.main{margin-left:72px;width:calc(100% - 72px)}.top-nav{gap:0}.top-item{padding:8px 9px}.search input{width:220px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side" data-component="Sidebar Navigation">
+<div class="nav-title">跨境业务</div>
+<div class="system-title on" data-system="voc">商品VOC系统</div>
+<div class="nav child" data-p="dashboard" data-system="voc"><b class="ico">总</b><span>评论总览</span></div>
+<div class="nav child" data-p="spu" data-system="voc"><b class="ico">表</b><span>ASIN深度分析</span></div>
+<div class="nav child" data-p="reviews" data-system="voc"><b class="ico">评</b><span>评论明细</span></div>
+<div class="system-title" data-system="comp">竞品分析系统</div>
+<div class="nav child on" data-p="insight" data-system="comp"><b class="ico">察</b><span>竞品详情洞察</span></div>
+<div class="nav child" data-p="competitor" data-system="comp"><b class="ico">采</b><span>竞品信息登记</span></div>
+</aside>
+<main class="main">
+<header class="top" data-component="Top Navigation Bar"><div class="top-left"><div class="top-nav"><div class="top-item">首页</div><div class="top-item">VOC</div><div class="top-item on">跨境业务</div><div class="top-item">管理中心</div></div><div class="crumb" id="crumb">跨境业务 / 竞品分析系统 / 竞品详情洞察</div></div><div class="top-r"><div class="search"><input placeholder="搜索 ASIN / 问题标签 / 评论关键词"></div><button class="btn" onclick="toast('已刷新')">⟳ 刷新</button><div class="avatar">林</div></div></header>
+<div class="page">
+
+<!-- ==================== VOC 评论总览 ==================== -->
+<section id="dashboard" class="sec" data-component="VOC Dashboard">
+<div class="title"><div><h1>商品VOC系统 / 评论总览</h1><p>仅展示自营商品评论数据，聚焦好评率、中差评率、问题提取和高风险ASIN。</p></div><button class="btn dark" onclick="toast('已导出总览')">⇩ 导出总览</button></div>
+<div class="filters"><div class="field"><label>时间</label><select><option>近30天</option><option>近7天</option><option>近3天</option></select></div><div class="field"><label>国家</label><select><option>全部国家</option><option>US</option><option>UK</option><option>DE</option><option>JP</option></select></div><div class="field"><label>账号/店铺</label><select><option>全部账号/店铺</option><option>wayshome_US</option><option>ANANIHOME_US</option></select></div><button class="btn primary" onclick="toast('已筛选')">搜索</button><button class="btn">重置</button></div>
+<div class="cards"><div class="card"><div class="label">好评率</div><div class="num">73.6%</div><div class="foot"><span class="green">4-5星</span> 当前筛选范围内自营评论</div></div><div class="card"><div class="label">中差评率</div><div class="num">26.4%</div><div class="foot"><span class="red">1-3星</span> 用于识别商品风险</div></div></div>
+<div class="grid2"><div class="card"><div class="st"><span>评论量与中差评趋势</span><span class="foot">蓝色正常 / 红色预警</span></div><div class="bars" id="trend"></div></div><div class="card"><div class="st"><span>问题提取 TOP 8</span><button class="btn small" onclick="showPage('spu')">查看ASIN</button></div><div class="list" id="issues"></div></div></div>
+<div class="grid2"><div class="table-card"><div class="table-head"><b>高风险商品预警</b></div><div class="table-wrap"><table><thead><tr><th>子ASIN</th><th>国家</th><th>账号/店铺</th><th>平均评分</th><th>中差评率</th><th>问题标签</th><th>风险</th><th>操作</th></tr></thead><tbody id="riskRows"></tbody></table></div></div><div class="table-card"><div class="table-head"><b>好评商品表</b></div><div class="table-wrap"><table><thead><tr><th>子ASIN</th><th>国家</th><th>账号/店铺</th><th>平均评分</th><th>好评率</th><th>好评卖点</th><th>操作</th></tr></thead><tbody id="goodRows"></tbody></table></div></div></div>
+</section>
+
+<!-- ==================== VOC ASIN深度分析 ==================== -->
+<section id="spu" class="sec" data-component="ASIN Deep Analysis">
+<div class="title"><div><h1>商品VOC系统 / ASIN 深度分析</h1><p>仅展示自营ASIN的近30天评论聚合结果，用于查看商品风险、好评卖点和AI处理建议。</p></div><button class="btn dark" onclick="toast('已导出表格')">⇩ 导出表格</button></div>
+<div class="filters"><div class="field"><label>时间</label><select><option>近30天</option><option>近7天</option></select></div><div class="field"><label>ASIN</label><input id="asinQ" placeholder="输入ASIN"></div><div class="field"><label>SKU</label><input placeholder="输入SKU"></div><div class="field range"><label>评分</label><input placeholder="最低"><span>~</span><input placeholder="最高"></div><div class="field range"><label>中差评率</label><input placeholder="最低"><span>~</span><input placeholder="最高"></div><div class="field"><label>风险</label><select><option>全部风险</option><option>高</option><option>中</option><option>低</option></select></div><button class="btn primary" onclick="renderSpu();toast('已筛选')">搜索</button></div>
+<div class="table-card"><div class="table-head"><b>ASIN聚合结果</b><span class="foot">点击详情查看AI归因和评论样本</span></div><div class="table-wrap"><table class="wide"><thead><tr><th>图片</th><th>ASIN</th><th>父ASIN</th><th>SKU</th><th>国家</th><th>账号/店铺</th><th>评论数</th><th>平均评分</th><th>中差评率</th><th>问题标签</th><th>好评卖点</th><th>AI处理建议</th><th>风险</th><th>运营</th><th>操作</th></tr></thead><tbody id="spuRows"></tbody></table></div></div>
+</section>
+
+<!-- ==================== VOC 评论明细 ==================== -->
+<section id="reviews" class="sec" data-component="Review Details">
+<div class="title"><div><h1>商品VOC系统 / 评论明细</h1><p>仅展示自营商品评论，支持按评论时间、评分、有帮助数、问题类型查看。</p></div><button class="btn dark" onclick="toast('已导出明细')">⇩ 导出明细</button></div>
+<div class="filters"><div class="field"><label>评论时间</label><select><option>近30天</option><option>近7天</option></select></div><div class="field"><label>子ASIN</label><input id="reviewAsinQ" placeholder="输入子ASIN"></div><div class="field"><label>买家名称</label><input placeholder="输入买家名称"></div><div class="field"><label>评论类型</label><select><option>全部类型</option><option>好评</option><option>中差评</option></select></div><div class="field"><label>问题类型</label><select><option>全部问题类型</option><option>包装破损</option><option>安装困难</option><option>表面划痕</option></select></div><button class="btn primary" onclick="renderReviews();toast('已筛选评论明细')">搜索</button><button class="btn" onclick="$('#reviewAsinQ').value='';renderReviews()">重置</button></div>
+<div class="table-card"><div class="table-head"><b>评论列表</b><div><button class="btn small" onclick="toast('已批量AI分析')">批量AI分析</button></div></div><div class="table-wrap"><table class="wide"><thead><tr><th><input type="checkbox"></th><th>图片</th><th>国家/店铺</th><th>子ASIN</th><th>SKU</th><th>评论时间</th><th>买家</th><th>评分</th><th>标题</th><th>评论内容</th><th>有帮助数</th><th>问题标签</th><th>好评卖点</th><th>严重程度</th><th>操作</th></tr></thead><tbody id="reviewRows"></tbody></table></div></div>
+</section>
+
+<!-- ==================== 竞品详情洞察（含监控） ==================== -->
+<section id="insight" class="sec on" data-component="Competitor Insight and Monitoring">
+<div class="title">
+<div><h1>竞品分析系统 / 竞品详情洞察</h1><p>自营与竞品对比 + 竞品动态监控，追踪标题、五点、价格、主图、评分变化。</p></div>
+<div style="display:flex;gap:8px">
+<button class="btn" onclick="toast('已导出竞品详情洞察')">⇩ 导出洞察</button>
+<button class="btn primary" onclick="toast('手动触发采集成功，数据将在1分钟后刷新')">⟳ 手动采集</button>
+</div>
+</div>
+
+<!-- 筛选栏 -->
+<div class="filters">
+<div class="field"><label>自营ASIN</label><select id="ownSel"></select></div>
+<div class="field"><label>国家</label><select id="countryFilter" onchange="renderInsight()"><option value="">全部国家</option><option>US</option><option>UK</option><option>DE</option></select></div>
+<div class="field"><label>空间</label><select id="spaceFilter" onchange="renderInsight()"><option value="">全部空间</option><option>卧室</option><option>客厅</option><option>餐厅</option><option>书房</option><option>玄关</option><option>户外</option></select></div>
+<div class="field"><label>品类</label><select id="catFilter" onchange="renderInsight()"><option value="">全部品类</option><option>床</option><option>床头柜</option><option>衣柜</option><option>餐桌</option><option>沙发</option><option>茶几</option><option>书柜</option><option>餐椅</option></select></div>
+<button class="btn primary" onclick="renderInsight();toast('已刷新竞品详情洞察')">搜索</button>
+<button class="btn" onclick="$('#countryFilter').value='';$('#spaceFilter').value='';$('#catFilter').value='';renderInsight()">重置</button>
+</div>
+
+<!-- 监控状态汇总条 -->
+<div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap" data-component="Monitoring Summary">
+<div style="flex:1;min-width:180px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px">
+<div style="width:40px;height:40px;border-radius:10px;background:var(--stat-green-bg);display:grid;place-items:center"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="10" width="4" height="8" rx="1" fill="var(--blue)"/><rect x="8" y="6" width="4" height="12" rx="1" fill="var(--blue)"/><rect x="14" y="2" width="4" height="16" rx="1" fill="var(--blue)"/></svg></div>
+<div><div class="label">监控竞品总数</div><div style="font-size:24px;font-weight:900" id="mTotal">0</div></div>
+</div>
+<div style="flex:1;min-width:180px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px">
+<div style="width:40px;height:40px;border-radius:10px;background:var(--stat-red-bg);display:grid;place-items:center"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="var(--red)" stroke-width="2.5"/><path d="M10 6v5" stroke="var(--red)" stroke-width="2.5" stroke-linecap="round"/><circle cx="10" cy="14" r="1.2" fill="var(--red)"/></svg></div>
+<div><div class="label">今日有变动</div><div style="font-size:24px;font-weight:900;color:var(--red)" id="mToday">0</div></div>
+</div>
+<div style="flex:1;min-width:180px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px">
+<div style="width:40px;height:40px;border-radius:10px;background:var(--stat-orange-bg);display:grid;place-items:center"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="var(--orange)" stroke-width="2.5"/><path d="M10 6v4l3 2" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div><div class="label">近7天有变动</div><div style="font-size:24px;font-weight:900;color:var(--orange)" id="mWeek">0</div></div>
+</div>
+<div style="flex:1;min-width:180px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px">
+<div style="width:40px;height:40px;border-radius:10px;background:var(--stat-green-bg);display:grid;place-items:center"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="var(--green)" stroke-width="2.5"/><path d="M7 10l2.5 2.5L13 8" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div><div class="label">暂无变动</div><div style="font-size:24px;font-weight:900;color:var(--green)" id="mStable">0</div></div>
+</div>
+</div>
+
+<!-- 竞品对比 + 监控表格 -->
+<div class="table-card" data-component="Insight Monitoring Table">
+<div class="table-head">
+<b>自营与竞品对比 + 监控</b>
+<div style="display:flex;align-items:center;gap:8px">
+<span class="mstat unchanged"><span class="dot"></span>无变化</span>
+<span class="mstat changed-recent"><span class="dot"></span>近期变动</span>
+<span class="mstat changed-today"><span class="dot"></span>今日变动</span>
+</div>
+</div>
+<div class="table-wrap">
+<table class="wide">
+<thead>
+<tr>
+<th style="position:sticky;left:0;background:#fbfdff;z-index:2">自营ASIN</th>
+<th style="position:sticky;left:110px;background:#fbfdff;z-index:2">竞品ASIN</th>
+<th>国家</th>
+<th>竞品店铺</th>
+<th>空间</th>
+<th>品类</th>
+<th>评分对比</th>
+<th>中差评率对比</th>
+<th>标题</th>
+<th>五点</th>
+<th>价格</th>
+<th>主图</th>
+<th>评分</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody id="insightRows"></tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- ==================== 竞品信息登记 ==================== -->
+<section id="competitor" class="sec" data-component="Competitor Collection Management">
+<div class="title"><div><h1>竞品分析系统 / 竞品信息登记</h1><p>登记外部竞品ASIN，配置空间与品类信息，系统按固定频率采集商品数据并监控变化。</p></div><div><button class="btn" onclick="openImport()">批量导入</button> <button class="btn primary" onclick="openComp()">+ 新增竞品ASIN</button></div></div>
+<div class="filters">
+<div class="field"><label>国家</label><select><option>全部国家</option><option>US</option><option>UK</option><option>DE</option></select></div>
+<div class="field"><label>空间</label><select><option>全部空间</option><option>卧室</option><option>客厅</option><option>餐厅</option><option>书房</option><option>玄关</option><option>户外</option></select></div>
+<div class="field"><label>品类</label><select><option>全部品类</option><option>床</option><option>床头柜</option><option>衣柜</option><option>餐桌</option><option>沙发</option><option>茶几</option><option>书柜</option><option>餐椅</option></select></div>
+<div class="field"><label>店铺</label><input placeholder="输入店铺"></div>
+<div class="field"><label>运营</label><select><option>全部运营</option><option>张雨晴</option><option>李明轩</option><option>陈思远</option><option>赵若安</option></select></div>
+<div class="field"><label>ASIN</label><input placeholder="输入ASIN"></div>
+<button class="btn primary" onclick="toast('已筛选竞品采集表')">搜索</button>
+<button class="btn">重置</button>
+</div>
+
+<!-- 采集统计 -->
+<div class="cards" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+<div class="card"><div class="label">已登记竞品ASIN</div><div class="num" id="cTotal">0</div></div>
+<div class="card"><div class="label">今日采集任务</div><div class="num" id="cTasks">4</div><div class="foot"><span class="green">成功 3</span> · <span class="red">失败 1</span></div></div>
+<div class="card"><div class="label">今日发现变动</div><div class="num" id="cChanges">0</div><div class="foot">已合并推送至钉钉通知群</div></div>
+</div>
+
+<!-- 采集管理表格 -->
+<div class="table-card">
+<div class="table-head"><b>竞品采集表</b><span class="foot">数据由RPA采集上传，采集状态由系统根据是否接收到数据判定</span></div>
+<div class="table-wrap">
+<table class="wide" style="min-width:1400px">
+<thead>
+<tr>
+<th>国家</th>
+<th>竞品ASIN</th>
+<th>对标自营ASIN</th>
+<th>竞品店铺</th>
+<th>空间</th>
+<th>品类</th>
+<th>对应运营</th>
+<th>采集状态</th>
+<th>最近同步</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody id="compRows"></tbody>
+</table>
+</div>
+</div>
+</section>
+
+</div></main></div>
+
+<!-- ==================== 遮罩层 ==================== -->
+<div class="mask" id="mask" onclick="closeAllDrawers()"></div>
+
+<!-- ==================== 通用详情抽屉（VOC用） ==================== -->
+<div class="drawer" id="drawer" data-component="Detail Drawer"><div class="dh"><div><h2 id="dTitle" style="margin:0">详情</h2><p id="dSub" style="margin:6px 0 0;color:#6b7280">AI分析详情</p></div><button class="x" onclick="closeDrawer('drawer')">×</button></div><div class="db" id="dBody"></div></div>
+
+<!-- ==================== 历史变化浮窗 ==================== -->
+<div class="drawer" id="historyDrawer" data-component="History Change Drawer">
+<div class="dh">
+<div>
+<h2 id="hTitle" style="margin:0">历史变化</h2>
+<p id="hSub" style="margin:6px 0 0;color:#6b7280">竞品ASIN变动记录</p>
+</div>
+<button class="x" onclick="closeDrawer('historyDrawer')">×</button>
+</div>
+<div class="db" id="hBody"></div>
+</div>
+
+<!-- ==================== 竞品商品详情弹窗（居中弹出） ==================== -->
+<div class="product-modal" id="productModal" data-component="Product Detail Modal">
+<div class="mask-bg" onclick="closeProductModal()"></div>
+<div class="product-modal-card">
+<div class="dh">
+<div>
+<h2 id="pdTitle" style="margin:0">竞品商品详情</h2>
+<p id="pdSub" style="margin:6px 0 0;color:#6b7280">查看竞品商品信息及用户评论</p>
+</div>
+<button class="x" onclick="closeProductModal()">×</button>
+</div>
+<div class="db" id="pdBody"></div>
+</div>
+</div>
+
+<!-- ==================== 新增竞品弹窗（含空间/品类） ==================== -->
+<div class="modal" id="compModal">
+<div class="modal-card">
+<div class="mh"><b>新增竞品ASIN</b><button class="x" onclick="closeModal('compModal')">×</button></div>
+<div class="mb">
+<div class="grid2">
+<div class="field"><label>国家</label><select><option>US</option><option>UK</option><option>DE</option></select></div>
+<div class="field"><label>对应运营</label><select><option>张雨晴</option><option>李明轩</option><option>陈思远</option><option>赵若安</option></select></div>
+<div class="field"><label>竞品店铺</label><input placeholder="例如 HOOBRO Store"></div>
+<div class="field"><label>竞品ASIN</label><input placeholder="例如 B0CP8892XX"></div>
+<div class="field"><label>对标自营ASIN</label><input placeholder="例如 B0G56QD4ZY"></div>
+<div class="field"><label>空间</label><select><option value="">请选择空间</option><option>卧室</option><option>客厅</option><option>餐厅</option><option>书房</option><option>玄关</option><option>户外</option></select></div>
+<div class="field"><label>品类</label><select><option value="">请选择品类</option><option>床</option><option>床头柜</option><option>衣柜</option><option>餐桌</option><option>沙发</option><option>茶几</option><option>书柜</option><option>餐椅</option></select></div>
+</div>
+<p style="text-align:right;margin-top:14px"><button class="btn" onclick="closeModal('compModal')">取消</button> <button class="btn primary" onclick="closeModal('compModal');toast('已保存竞品ASIN，系统将按配置频率开始采集')">保存</button></p>
+</div>
+</div>
+</div>
+
+<!-- ==================== 编辑竞品弹窗 ==================== -->
+<div class="modal" id="editCompModal">
+<div class="modal-card">
+<div class="mh"><b>编辑竞品ASIN</b><button class="x" onclick="closeModal('editCompModal')">×</button></div>
+<div class="mb">
+<div class="grid2">
+<div class="field"><label>国家</label><select><option>US</option><option>UK</option><option>DE</option></select></div>
+<div class="field"><label>对应运营</label><select><option>张雨晴</option><option>李明轩</option><option>陈思远</option><option>赵若安</option></select></div>
+<div class="field"><label>竞品店铺</label><input id="editStore" placeholder="竞品店铺名"></div>
+<div class="field"><label>竞品ASIN</label><input id="editAsin" readonly style="color:#9ca3af"></div>
+<div class="field"><label>对标自营ASIN</label><input id="editOwn" readonly style="color:#9ca3af"></div>
+<div class="field"><label>空间</label><select id="editSpace"><option value="">请选择空间</option><option>卧室</option><option>客厅</option><option>餐厅</option><option>书房</option><option>玄关</option><option>户外</option></select></div>
+<div class="field"><label>品类</label><select id="editCat"><option value="">请选择品类</option><option>床</option><option>床头柜</option><option>衣柜</option><option>餐桌</option><option>沙发</option><option>茶几</option><option>书柜</option><option>餐椅</option></select></div>
+</div>
+<p style="text-align:right;margin-top:14px"><button class="btn" onclick="closeModal('editCompModal')">取消</button> <button class="btn primary" onclick="closeModal('editCompModal');toast('已更新竞品信息')">保存修改</button></p>
+</div>
+</div>
+</div>
+
+<!-- ==================== 批量导入弹窗 ==================== -->
+<div class="modal" id="importModal">
+<div class="modal-card">
+<div class="mh"><b>批量导入竞品ASIN</b><button class="x" onclick="closeModal('importModal')">×</button></div>
+<div class="mb">
+<div style="margin-bottom:12px;padding:12px;background:#fef3c7;border-radius:10px;font-size:13px;color:#92400e;font-weight:700">导入模板需包含：国家、竞品ASIN、对标自营ASIN、竞品店铺、空间、品类、对应运营</div>
+<div class="upload">点击上传 Excel / CSV 文件</div>
+<p style="text-align:right;margin-top:14px"><button class="btn">下载模板</button> <button class="btn primary" onclick="closeModal('importModal');toast('已导入')">开始导入</button></p>
+</div>
+</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],pct=s=>parseFloat(String(s).replace('%',''))||0;
+
+// ===== VOC 数据 =====
+const spu=[
+{asin:'B0G56QD4ZY',parent:'B0G56QD4ZY',sku:'U219Q05082-YW',country:'US',account:'wayshome_US',score:3.92,bad:'18.4%',reviews:231,issues:['包装破损 31%(42)','表面划痕 19%(26)','配件缺失 15%(21)'],goods:['外观好看 28%(65)','价格合理 19%(44)','小空间适配 16%(37)'],ai:'优先排查包装防护和桌面保护膜。',risk:'高',owner:'张雨晴',pic:'',samples:[['包装破损','Both the original cabinet and replacement came damaged.','原来的柜子和换新的柜子都送到时损坏了。'],['表面划痕','The top of the coffee table had long scratches.','咖啡桌桌面有很长的划痕。']]},
+{asin:'B0GGR5CCDY',parent:'B0GGR5CCDY',sku:'Y219J10062-YW',country:'US',account:'wayshome_US',score:4.08,bad:'13.2%',reviews:186,issues:['安装困难 27%(31)','孔位不准 16%(18)','尺寸偏小 12%(14)'],goods:['样式经典 24%(45)','收纳实用 21%(39)','适合卧室 18%(33)'],ai:'优化说明书和配件标识，补充安装视频二维码。',risk:'中',owner:'李明轩',pic:'p2',samples:[['安装困难','The instructions were confusing and some holes did not line up.','说明书让人看不明白，有些孔位对不上。']]},
+{asin:'B0DG5FR8ZV',parent:'B0DG5FR8ZV',sku:'WSH83108100-1',country:'US',account:'ANANIHOME_US',score:4.34,bad:'8.1%',reviews:154,issues:['色差明显 13%(9)','尺寸偏差 10%(7)','门板不齐 8%(6)'],goods:['容量够用 32%(49)','性价比高 23%(35)','外观干净 19%(29)'],ai:'优化图片色差表达和门板安装说明。',risk:'低',owner:'陈思远',pic:'p3',samples:[['色差明显','The color is darker than the product photos.','实际颜色比商品图更深。']]},
+{asin:'B0DS4GBN2B',parent:'B0DS4GBN2B',sku:'X00533050-1',country:'US',account:'ANANIHOME_US',score:3.76,bad:'22.7%',reviews:97,issues:['螺丝错位 28%(18)','材质廉价 22%(14)','不够稳定 17%(11)'],goods:['价格便宜 20%(19)','款式简洁 16%(16)','收纳空间 11%(11)'],ai:'先复盘孔位和结构稳定性，再决定是否继续放量。',risk:'高',owner:'赵若安',pic:'p4',samples:[['螺丝错位','The screw was misaligned and pushed through.','螺丝孔位不准，安装时把板材顶穿。']]},
+{asin:'B0BX95XRVJ',parent:'B0BX95XRVJ',sku:'AZY83108080',country:'US',account:'ANANIHOME_US',score:4.21,bad:'10.9%',reviews:128,issues:['桌腿晃动 18%(14)','安装困难 13%(10)','包装压痕 9%(7)'],goods:['小巧实用 30%(38)','外观轻盈 22%(28)','价格合理 18%(23)'],ai:'强化小空间场景，优化桌腿连接件说明。',risk:'中',owner:'刘子航',pic:'p2',samples:[['桌腿晃动','The table legs feel a little wobbly.','桌腿感觉有点晃。']]}
+];
+const reviews=[
+['亚马逊自营','B0G56QD4ZY','U219Q05082-YW','US / wayshome_US','2026-06-09','Ashley',1,'Arrived damaged','Both the original cabinet and replacement came damaged.\n原来的柜子和换新的柜子都送到时损坏了。',18,'包装破损','','高'],
+['亚马逊自营','B0GGR5CCDY','Y219J10062-YW','US / wayshome_US','2026-06-08','Mike',2,'Hard to assemble','The instructions were confusing and some holes did not line up.\n说明书让人看不明白，有些孔位对不上。',9,'安装困难','','中'],
+['亚马逊自营','B0DG5FR8ZV','WSH83108100-1','US / ANANIHOME_US','2026-06-07','Jenny',5,'Looks clean','It holds more shoes than I expected.\n它能放下的鞋比我预期更多。',6,'','容量够用','低']
+];
+const issue=[['包装破损',31,'r'],['安装困难',24,'o'],['配件缺失',19,'o'],['表面划痕',17,'r'],['尺寸偏小',14,''],['材质廉价',11,'p'],['色差明显',8,''],['物流延迟',6,'g']];
+
+// ===== 竞品监控数据 =====
+const comp=[
+{
+  asin:'B0CP8892XX',own:'B0G56QD4ZY',country:'US',store:'HOOBRO Store',owner:'张雨晴',
+  freq:'每日一次',status:'received',last:'2026-06-25 09:20',next:'2026-06-26 09:00',
+  score:4.24,bad:'14.8%',space:'客厅',category:'茶几',price:'$89.99',
+  mon:{title:'changed-today',bullet:'changed-recent',price:'changed-today',image:'unchanged',rating:'changed-recent'},
+  priceVal:'$89.99',ratingVal:'4.24',
+  displayTitle:'HOOBRO Coffee Table for Living Room, Industrial Style with Storage Shelf...',
+  bulletSummary:'1. Industrial vintage wood-look design\n2. Reinforced metal frame, 150 lbs capacity\n3. Lower storage shelf\n4. Quick 20-min assembly\n5. 43.3 x 23.6 x 17.7 inches',
+  productImg:'thumb',
+  attrs:{Brand:'HOOBRO',Color:'Walnut',Material:'Engineered Wood + Metal',Dimensions:'43.3"D x 23.6"W x 17.7"H',Size:'Standard','Package Options':'1 PACK / 2 PACK'},
+  history:[
+    {time:'2026-06-25 09:20',field:'标题',type:'title',old:'HOOBRO Industrial Coffee Table with Storage Shelf',new:'HOOBRO Coffee Table for Living Room, Industrial Style with Storage Shelf, Easy Assembly'},
+    {time:'2026-06-25 09:20',field:'价格',type:'price',old:'$95.99',new:'$89.99'},
+    {time:'2026-06-23 09:15',field:'五点描述',type:'bullet',old:'第2点: Sturdy and durable construction with metal frame...',new:'第2点: Heavy-duty metal frame with reinforced joints, supports up to 150 lbs...'},
+    {time:'2026-06-22 09:10',field:'评分',type:'rating',old:'4.21',new:'4.24'},
+    {time:'2026-06-18 09:20',field:'标题',type:'title',old:'HOOBRO Coffee Table, Industrial Style',new:'HOOBRO Industrial Coffee Table with Storage Shelf'},
+    {time:'2026-06-15 09:10',field:'价格',type:'price',old:'$99.99',new:'$95.99'}
+  ],
+  logs:[
+    {time:'2026-06-25 09:20',status:'ok',duration:'2m 14s',newData:12,note:'全字段采集成功'},
+    {time:'2026-06-24 09:18',status:'ok',duration:'1m 58s',newData:8,note:'全字段采集成功'},
+    {time:'2026-06-23 09:15',status:'ok',duration:'2m 31s',newData:6,note:'检测到五点描述变更'},
+    {time:'2026-06-22 09:10',status:'ok',duration:'2m 05s',newData:4,note:'检测到评分变动'},
+    {time:'2026-06-21 09:22',status:'ok',duration:'1m 47s',newData:0,note:'无变化'},
+    {time:'2026-06-20 09:19',status:'fail',duration:'0m 0s',newData:0,note:'RPA连接超时，已自动重试'},
+    {time:'2026-06-19 09:15',status:'ok',duration:'2m 22s',newData:3,note:'全字段采集成功'}
+  ],
+  detail:{
+    title:'HOOBRO Coffee Table for Living Room, Industrial Style with Storage Shelf, Easy Assembly, Vintage Wood Look, Metal Frame, 43.3 x 23.6 x 17.7 Inches',
+    bullets:[
+      'Industrial style design with vintage wood-look finish and black metal frame, perfect for living room, bedroom, or office space',
+      'Heavy-duty metal frame with reinforced joints, supports up to 150 lbs, providing long-lasting stability and durability',
+      'Lower storage shelf for magazines, books, remote controls — keep your living space neat and organized',
+      'Easy assembly with numbered parts and clear instructions, most users complete setup in under 20 minutes',
+      'Dimensions: 43.3 x 23.6 x 17.7 inches, fits well in small apartments and compact spaces'
+    ],
+    reviews:[
+      {name:'Sarah M.',stars:5,title:'Perfect coffee table for my small apartment',date:'June 18, 2026',variant:'Color: Walnut / Size: Standard',verified:true,
+       body:'I was looking for something that would fit in my small living room and this table is perfect. The industrial look goes well with my decor. Assembly took about 15 minutes. Very sturdy and the storage shelf is great for books and magazines.',
+       images:3,helpful:12},
+      {name:'David K.',stars:4,title:'Good value for the price',date:'June 15, 2026',variant:'Color: Walnut / Size: Standard',verified:true,
+       body:'Nice table, looks more expensive than it is. The only reason for 4 stars is one of the screw holes was slightly misaligned, but I managed to make it work. Overall very happy with the purchase.',
+       images:2,helpful:8},
+      {name:'Jennifer L.',stars:5,title:'Exactly what I expected',date:'June 10, 2026',variant:'Color: Rustic Brown / Size: Standard',verified:true,
+       body:'The color is beautiful and the table is very stable. I put it together by myself in about 20 minutes. The instructions were clear and all parts were included. Would recommend!',
+       images:0,helpful:5},
+      {name:'Michael R.',stars:3,title:'Decent but arrived with minor damage',date:'June 5, 2026',variant:'Color: Walnut / Size: Standard',verified:true,
+       body:'The table looks nice but there was a small dent on one corner when it arrived. The packaging could be better. Contacted customer service and they offered a partial refund which I accepted.',
+       images:1,helpful:3}
+    ]
+  }
+},
+{
+  asin:'B0WLV8821K',own:'B0GGR5CCDY',country:'US',store:'WLIVE HOME',owner:'李明轩',
+  freq:'每日一次',status:'received',last:'2026-06-25 09:10',next:'2026-06-26 09:00',
+  score:4.18,bad:'17.1%',space:'卧室',category:'床头柜',price:'$65.99',
+  mon:{title:'unchanged',bullet:'unchanged',price:'changed-recent',image:'unchanged',rating:'unchanged'},
+  priceVal:'$65.99',ratingVal:'4.18',
+  displayTitle:'WLIVE HOME Nightstand with Drawer, Modern Bedside Table with Open Shelf...',
+  bulletSummary:'1. Modern minimalist white design\n2. Smooth-glide hidden drawer\n3. Open bottom shelf\n4. Engineered wood + metal handles\n5. Compact 15.7 x 15.7 x 21.6 inches',
+  productImg:'thumb p2',
+  attrs:{Brand:'WLIVE HOME',Color:'White',Material:'Engineered Wood',Dimensions:'15.7"D x 15.7"W x 21.6"H',Size:'Standard'},
+  history:[
+    {time:'2026-06-23 09:10',field:'价格',type:'price',old:'$69.99',new:'$65.99'},
+    {time:'2026-06-16 09:10',field:'评分',type:'rating',old:'4.15',new:'4.18'}
+  ],
+  logs:[
+    {time:'2026-06-25 09:10',status:'ok',duration:'1m 42s',newData:5,note:'全字段采集成功'},
+    {time:'2026-06-24 09:12',status:'ok',duration:'1m 55s',newData:3,note:'全字段采集成功'},
+    {time:'2026-06-23 09:10',status:'ok',duration:'2m 01s',newData:4,note:'检测到价格变更'},
+    {time:'2026-06-22 09:08',status:'ok',duration:'1m 38s',newData:0,note:'无变化'},
+    {time:'2026-06-21 09:08',status:'ok',duration:'1m 44s',newData:8,note:'检测到评分变动'}
+  ],
+  detail:{
+    title:'WLIVE HOME Nightstand with Drawer, Modern Bedside Table with Open Shelf, Small End Table for Bedroom, Living Room, White Finish',
+    bullets:[
+      'Modern minimalist design with clean lines and white finish, complements any bedroom or living room decor style',
+      'Smooth-glide drawer provides hidden storage for personal items, keeping your nightstand surface clutter-free',
+      'Open bottom shelf for books, phone chargers, or decorative items — easy access at your bedside',
+      'Constructed with engineered wood and metal handles for durability, wipe-clean surface for easy maintenance',
+      'Compact size: 15.7 x 15.7 x 21.6 inches, ideal for small bedrooms and tight spaces'
+    ],
+    reviews:[
+      {name:'Emily T.',stars:5,title:'Love this little nightstand!',date:'June 20, 2026',variant:'Color: White / Size: Standard',verified:true,
+       body:'Perfect size for my small bedroom. The drawer is smooth and holds all my bedtime essentials. Assembly was super easy — took me about 10 minutes. Looks great next to my bed.',
+       images:2,helpful:9},
+      {name:'Robert H.',stars:4,title:'Good quality for the price',date:'June 12, 2026',variant:'Color: White / Size: Standard',verified:true,
+       body:'Solid little table. The white finish is clean and modern. Only complaint is the drawer is a bit small, but it works fine for my phone and glasses. Would buy again.',
+       images:1,helpful:6},
+      {name:'Amanda S.',stars:2,title:'Drawer stuck after one week',date:'June 3, 2026',variant:'Color: Black / Size: Standard',verified:true,
+       body:'The table looks nice but the drawer started sticking after just one week of use. Tried adjusting the rails but it still doesn\'t slide smoothly. Disappointed for the price.',
+       images:1,helpful:14}
+    ]
+  }
+},
+{
+  asin:'B0VAS1123L',own:'B0DG5FR8ZV',country:'UK',store:'VASAGLE Official',owner:'陈思远',
+  freq:'每周一次',status:'failed',last:'2026-06-18 22:10',next:'2026-06-25 22:00',
+  score:4.31,bad:'9.6%',space:'客厅',category:'书柜',price:'£79.99',
+  mon:{title:'unchanged',bullet:'unchanged',price:'changed-recent',image:'unchanged',rating:'unchanged'},
+  priceVal:'£79.99',ratingVal:'4.31',
+  displayTitle:'VASAGLE Tree Bookshelf, 10-Tier Freestanding Bookcase with Storage...',
+  bulletSummary:'1. Tree-shaped 10-tier open shelves\n2. Industrial metal frame + rustic brown panels\n3. Anti-tip safety kit included\n4. Each shelf holds 22 lbs\n5. Vertical space-saving design',
+  productImg:'thumb p3',
+  attrs:{Brand:'VASAGLE',Color:'Rustic Brown',Material:'Engineered Wood + Metal',Dimensions:'19.7"D x 11.8"W x 55.1"H','Item Weight':'26.5 lbs'},
+  history:[
+    {time:'2026-06-20 22:10',field:'价格',type:'price',old:'£84.99',new:'£79.99'}
+  ],
+  logs:[
+    {time:'2026-06-18 22:10',status:'fail',duration:'0m 0s',newData:0,note:'目标页面返回404，可能ASIN已下架'},
+    {time:'2026-06-11 22:08',status:'ok',duration:'2m 45s',newData:7,note:'全字段采集成功'}
+  ],
+  detail:{
+    title:'VASAGLE Tree Bookshelf, 10-Tier Freestanding Bookcase with Storage, Industrial Book Shelf for Living Room, Home Office, Rustic Brown',
+    bullets:[
+      'Unique tree-shaped design with 10 tiers of open shelving, display books, plants, and decorations in style',
+      'Industrial-style metal frame paired with rustic brown panels for a warm, inviting look in any room',
+      'Anti-tip kit included for wall mounting — safe for homes with children and pets',
+      'Each shelf holds up to 22 lbs, engineered wood panels are water-resistant and easy to clean',
+      'Overall dimensions: 19.7 x 11.8 x 55.1 inches, vertical design saves floor space'
+    ],
+    reviews:[
+      {name:'James W.',stars:5,title:'Beautiful display shelf',date:'June 8, 2026',variant:'Color: Rustic Brown',verified:true,
+       body:'This bookshelf is a statement piece! Everyone who visits comments on it. Assembly took about 45 minutes but the instructions were clear. Holds all my books and plants perfectly.',
+       images:4,helpful:18},
+      {name:'Sophie B.',stars:4,title:'Great shelf but takes time to build',date:'May 28, 2026',variant:'Color: Rustic Brown',verified:true,
+       body:'Love the tree design, looks amazing in my living room. Took me about an hour to put together — lots of pieces but everything fit well. Very sturdy once assembled.',
+       images:2,helpful:7}
+    ]
+  }
+},
+{
+  asin:'B0YAH8822D',own:'B0DS4GBN2B',country:'US',store:'Yaheetech',owner:'赵若安',
+  freq:'每周一次',status:'pending',last:'2026-06-20 20:00',next:'2026-06-27 21:00',
+  score:4.03,bad:'20.2%',space:'客厅',category:'沙发',price:'$159.99',
+  mon:{title:'unchanged',bullet:'unchanged',price:'unchanged',image:'unchanged',rating:'changed-recent'},
+  priceVal:'$159.99',ratingVal:'4.03',
+  displayTitle:'Yaheetech Convertible Futon Sofa Bed, Modern Loveseat with Adjustable Backrest...',
+  bulletSummary:'1. 3-position adjustable backrest sofa/lounger/bed\n2. Premium velvet upholstery\n3. Solid wood frame, 500 lbs capacity\n4. Compact loveseat for small spaces\n5. Tool-free quick assembly',
+  productImg:'thumb p4',
+  attrs:{Brand:'Yaheetech',Color:'Dark Grey',Material:'Velvet + Wood Frame',Dimensions:'65.4"D x 30.7"W x 32.7"H',Size:'Loveseat','Package Options':'1 PACK'},
+  history:[
+    {time:'2026-06-22 20:05',field:'评分',type:'rating',old:'4.05',new:'4.03'}
+  ],
+  logs:[
+    {time:'2026-06-20 20:00',status:'ok',duration:'3m 12s',newData:8,note:'全字段采集成功'},
+    {time:'2026-06-13 21:05',status:'ok',duration:'2m 58s',newData:5,note:'全字段采集成功'}
+  ],
+  detail:{
+    title:'Yaheetech Convertible Futon Sofa Bed, Modern Loveseat with Adjustable Backrest, Velvet Upholstered Couch for Small Space, Living Room, Apartment, Dark Grey',
+    bullets:[
+      'Convertible design with 3-position adjustable backrest — use as a sofa, lounger, or full-size sleeper bed',
+      'Premium velvet upholstery with tufted stitching, soft to the touch and easy to maintain',
+      'Sturdy wooden frame with reinforced legs supports up to 500 lbs, built for everyday use',
+      'Compact loveseat size perfect for apartments, dorm rooms, and small living spaces',
+      'Quick assembly — legs attach in minutes, no tools required. Dimensions: 65.4 x 30.7 x 32.7 inches'
+    ],
+    reviews:[
+      {name:'Lisa P.',stars:5,title:'Great sofa for my studio apartment',date:'June 16, 2026',variant:'Color: Dark Grey / Size: Loveseat',verified:true,
+       body:'This futon is perfect for my small space. The velvet is super soft and the dark grey color looks elegant. Converts to a bed easily when guests stay over. Very impressed for the price!',
+       images:3,helpful:22},
+      {name:'Chris M.',stars:4,title:'Comfortable but wish it was wider',date:'June 8, 2026',variant:'Color: Dark Grey / Size: Loveseat',verified:true,
+       body:'The sofa is comfortable and looks great. Assembly was straightforward. My only complaint is the seating width is a bit narrow for two adults. Fine for one person though.',
+       images:0,helpful:11},
+      {name:'Nancy G.',stars:3,title:'Nice look but fabric pills quickly',date:'May 30, 2026',variant:'Color: Navy Blue / Size: Loveseat',verified:true,
+       body:'The sofa looks nice when you first get it but after about a month the velvet started pilling on the seat cushions. Still comfortable but the fabric quality could be better.',
+       images:2,helpful:8},
+      {name:'Kevin T.',stars:5,title:'Best futon I\'ve owned',date:'May 22, 2026',variant:'Color: Dark Grey / Size: Loveseat',verified:true,
+       body:'I\'ve gone through several futons over the years and this one is by far the best. Solid frame, doesn\'t creak, and the mattress position is actually comfortable to sleep on.',
+       images:1,helpful:15}
+    ]
+  }
+}
+];
+
+// ===== 通用函数 =====
+function tags(a,c=''){return(a||[]).map(x=>`<span class="tag ${c}">${x}</span>`).join('')}
+function riskByBad(v){v=pct(v);return v>=20?'高':v>=10?'中':'低'}
+function toast(t){let e=$('#toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),1800)}
+function closeModal(id){$('#'+id).classList.remove('show')}
+function openComp(){$('#compModal').classList.add('show')}
+function openImport(){$('#importModal').classList.add('show')}
+
+function closeDrawer(id){$('#'+id).classList.remove('open');$('#mask').classList.remove('show')}
+function closeAllDrawers(){$$('.drawer').forEach(d=>d.classList.remove('open'));$('#mask').classList.remove('show')}
+
+function openDrawer(id){$$('.drawer').forEach(d=>{if(d.id!==id)d.classList.remove('open')});$('#'+id).classList.add('open');$('#mask').classList.add('show')}
+
+// ===== 监控状态标签 =====
+function mstatTag(status){
+  const map={'unchanged':['无变化','unchanged'],'changed-recent':['近期变动','changed-recent'],'changed-today':['今日变动','changed-today']};
+  const[label,cls]=map[status]||map['unchanged'];
+  return `<span class="mstat ${cls}"><span class="dot"></span>${label}</span>`;
+}
+
+// ===== VOC 渲染 =====
+function renderDash(){
+  let days=[['6/03',24,6],['6/04',31,8],['6/05',29,7],['6/06',42,12],['6/07',38,15],['6/08',44,16],['6/09',51,22]];
+  $('#trend').innerHTML=days.map(d=>`<div class="barcol"><div class="bar ${d[2]/d[1]>.32?'warn':''}" style="height:${60+d[1]*2}px" data-tip="日期：${d[0]}\n新增评论：${d[1]}\n中差评：${d[2]}"></div>${d[0]}</div>`).join('');
+  $('#issues').innerHTML=issue.map(x=>`<div class="list-row"><span>${x[0]}</span><div class="prog"><i class="${x[2]}" style="width:${x[1]*2.2}%"></i></div><span>${x[1]}%</span></div>`).join('');
+  $('#riskRows').innerHTML=spu.filter(x=>x.risk!='低').map(x=>`<tr><td><a onclick="jumpToSpu('${x.asin}')">${x.asin}</a></td><td>${x.country}</td><td>${x.account}</td><td>${x.score}</td><td>${x.bad}</td><td>${tags(x.issues.slice(0,2),'r')}</td><td><span class="risk ${x.risk}">${x.risk}</span></td><td><button class="btn small" onclick="jumpToSpu('${x.asin}')">详情</button></td></tr>`).join('');
+  $('#goodRows').innerHTML=spu.slice().sort((a,b)=>b.score-a.score).slice(0,3).map(x=>`<tr><td><a onclick="jumpToSpu('${x.asin}')">${x.asin}</a></td><td>${x.country}</td><td>${x.account}</td><td>${x.score}</td><td>${(100-pct(x.bad)).toFixed(1)}%</td><td>${tags(x.goods.slice(0,2),'g')}</td><td><button class="btn small" onclick="jumpToSpu('${x.asin}')">详情</button></td></tr>`).join('')
+}
+function renderSpu(){
+  let q=($('#asinQ')?.value||'').trim().toUpperCase(),arr=spu.filter(x=>(!q||x.asin.includes(q)||x.parent.includes(q)||String(x.sku).toUpperCase().includes(q)));
+  $('#spuRows').innerHTML=arr.length?arr.map(x=>`<tr><td><div class="pic ${x.pic}">图</div></td><td><a>${x.asin}</a></td><td>${x.parent}</td><td>${x.sku}</td><td>${x.country}</td><td>${x.account}</td><td>${x.reviews}</td><td>${x.score}</td><td>${x.bad}</td><td>${tags(x.issues.slice(0,2),'r')}</td><td>${tags(x.goods.slice(0,2),'g')}</td><td>${x.ai}</td><td><span class="risk ${x.risk}">${x.risk}</span></td><td>${x.owner}</td><td><button class="btn small" onclick="detail('${x.asin}')">详情</button></td></tr>`).join(''):`<tr><td colspan="15" style="text-align:center;color:#9ca3af;padding:34px">暂无匹配ASIN。</td></tr>`
+}
+function renderReviews(){
+  let q=($('#reviewAsinQ')?.value||'').trim().toUpperCase(),arr=reviews.filter(r=>(!q||r[1].includes(q)||r[2].includes(q)));
+  $('#reviewRows').innerHTML=arr.length?arr.map((r,i)=>`<tr><td><input type="checkbox"></td><td><div class="pic">图</div></td><td>${r[3]}</td><td><a>${r[1]}</a></td><td>${r[2]}</td><td>${r[4]}</td><td>${r[5]}</td><td>${r[6]}</td><td>${r[7]}</td><td style="white-space:pre-line;min-width:260px">${r[8]}</td><td>${r[9]}</td><td>${r[10]?tags([r[10]],'r'):''}</td><td>${r[11]?tags([r[11]],'g'):''}</td><td><span class="risk ${r[12]}">${r[12]}</span></td><td><button class="btn small" onclick="reviewDetail(${i})">详情</button></td></tr>`).join(''):`<tr><td colspan="15" style="text-align:center;color:#9ca3af;padding:34px">暂无匹配评论。</td></tr>`
+}
+function reviewDetail(i){
+  let r=reviews[i],parts=String(r[8]).split('\\n'),en=parts[0]||'',zh=parts.slice(1).join('\\n'),issue=r[10],good=r[11],level=r[12],asin=r[1],sku=r[2],title=r[7],date=r[4];
+  $('#dTitle').textContent=title;$('#dSub').textContent=`${r[3]} · ${asin}`;
+  $('#dBody').innerHTML=`<div class="box"><div class="kv"><b>国家/店铺</b><span>${r[3]}</span></div><div class="kv"><b>ASIN</b><span>${asin}</span></div><div class="kv"><b>SKU</b><span>${sku}</span></div><div class="kv"><b>评论时间</b><span>${date}</span></div><div class="kv"><b>买家</b><span>${r[5]}</span></div><div class="kv"><b>评分</b><span>${r[6]} 星</span></div><div class="kv"><b>有帮助数</b><span>${r[9]}</span></div></div><h3>评论内容</h3><div class="quote">${en}<br>${zh?`<span class="label">${zh}</span>`:''}</div><h3>AI标签</h3><div class="box"><div class="kv"><b>问题标签</b><span>${issue?tags([issue],'r'):'--'}</span></div><div class="kv"><b>好评卖点</b><span>${good?tags([good],'g'):'--'}</span></div><div class="kv"><b>严重程度</b><span>${level}</span></div></div>`;
+  openDrawer('drawer')
+}
+function detail(asin){
+  let x=spu.find(a=>a.asin==asin)||spu[0],goodRate=(100-pct(x.bad)).toFixed(1)+'%',badCnt=Math.round(x.reviews*pct(x.bad)/100);
+  $('#dTitle').textContent=x.asin;$('#dSub').textContent=`${x.country} · ${x.account}`;
+  $('#dBody').innerHTML=`<div class="grid2"><div class="card"><div class="label">评论数</div><div class="num">${x.reviews}</div></div><div class="card"><div class="label">平均评分 / 中差评率</div><div class="num">${x.score} / ${x.bad}</div></div></div><div class="box"><b>AI诊断报告</b><div class="kv"><b>结论</b><span>${x.ai}</span></div><div class="kv"><b>证据</b><span>近30天共 ${x.reviews} 条自营评论，预计中差评 ${badCnt} 条。</span></div></div><h3>问题标签</h3>${tags(x.issues,'r')}<h3>好评卖点</h3>${tags(x.goods,'g')}<h3>典型评论样本</h3>${x.samples.map(s=>`<div class="quote"><b>${s[0]}</b><br>${s[1]}<br><span class="label">${s[2]}</span></div>`).join('')}`;
+  openDrawer('drawer')
+}
+function jumpToSpu(asin){$('#asinQ').value=asin;showPage('spu');renderSpu();toast('已跳转到ASIN深度分析')}
+
+// ===== 竞品详情洞察渲染 =====
+function renderInsight(){
+  let own=$('#ownSel').value||comp[0].own;
+  let cf=$('#countryFilter').value, sf=$('#spaceFilter').value, catf=$('#catFilter').value;
+  let arr=comp.filter(x=>{
+    if(x.own!==own) return false;
+    if(cf&&x.country!==cf) return false;
+    if(sf&&x.space!==sf) return false;
+    if(catf&&x.category!==catf) return false;
+    return true;
+  });
+
+  // 如果选了"全部自营ASIN"
+  if(!own||own===''){arr=comp.filter(x=>{
+    if(cf&&x.country!==cf) return false;
+    if(sf&&x.space!==sf) return false;
+    if(catf&&x.category!==catf) return false;
+    return true;
+  })}
+
+  // 统计
+  let todayCount=arr.filter(x=>Object.values(x.mon).includes('changed-today')).length;
+  let weekCount=arr.filter(x=>Object.values(x.mon).some(v=>v==='changed-recent'||v==='changed-today')).length;
+  let stableCount=arr.length-todayCount-weekCount+todayCount;
+  // recalc stable
+  stableCount=arr.filter(x=>Object.values(x.mon).every(v=>v==='unchanged')).length;
+
+  $('#mTotal').textContent=arr.length;
+  $('#mToday').textContent=todayCount;
+  $('#mWeek').textContent=weekCount;
+  $('#mStable').textContent=stableCount;
+
+  if(!arr.length){
+    $('#insightRows').innerHTML=`<tr><td colspan="14"><div class="empty-state"><div class="empty-icon" style="font-size:40px;opacity:.25"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="16" width="32" height="22" rx="3" stroke="#9ca3af" stroke-width="2.5"/><path d="M8 19l16 11 16-11" stroke="#9ca3af" stroke-width="2.5" stroke-linecap="round"/></svg></div><p>暂无匹配的竞品数据</p><p style="font-size:12px">请调整筛选条件或新增竞品ASIN</p></div></td></tr>`;
+    return;
+  }
+
+  $('#insightRows').innerHTML=arr.map(x=>{
+    let o=spu.find(s=>s.asin==x.own);
+    let imgClass=x.productImg||'thumb';
+    let bulletLines=(x.bulletSummary||'').replace(/\\n/g,'&#10;');
+    return `<tr>
+      <td style="position:sticky;left:0;background:#fff;z-index:1"><a>${x.own}</a></td>
+      <td style="position:sticky;left:110px;background:#fff;z-index:1"><a>${x.asin}</a></td>
+      <td><span class="tag b">${x.country}</span></td>
+      <td>${x.store}</td>
+      <td><span class="tag">${x.space}</span></td>
+      <td><span class="tag">${x.category}</span></td>
+      <td style="white-space:nowrap"><b>${o?.score||'--'}</b> <span style="color:#9ca3af">/</span> <b>${x.score}</b></td>
+      <td style="white-space:nowrap">${o?.bad||'--'} <span style="color:#9ca3af">/</span> ${x.bad}</td>
+      <td style="min-width:200px"><div class="tip-wrap"><span style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:13px;line-height:1.5">${x.displayTitle||'--'}</span><div class="tip-text">${x.detail?.title||x.displayTitle||'--'}</div></div>${mstatTag(x.mon.title)}</td>
+      <td style="min-width:180px"><div class="tip-wrap"><span style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:13px;line-height:1.5;white-space:pre-line">${x.bulletSummary?x.bulletSummary.substring(0,60)+'...':'--'}</span><div class="tip-text" style="white-space:pre-line">${bulletLines||'--'}</div></div>${mstatTag(x.mon.bullet)}</td>
+      <td style="white-space:nowrap"><b>${x.priceVal}</b><br>${mstatTag(x.mon.price)}</td>
+      <td><div class="${imgClass}" onclick="openProductDetail('${x.asin}')" title="点击查看详情">主图</div>${mstatTag(x.mon.image)}</td>
+      <td style="white-space:nowrap"><b>${x.ratingVal}</b><br>${mstatTag(x.mon.rating)}</td>
+      <td>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <button class="btn small primary" onclick="openProductDetail('${x.asin}')">查看详情</button>
+          <button class="btn small" onclick="openHistory('${x.asin}')">历史变化</button>
+          <button class="btn small" onclick="showPage('competitor');toast('已跳转到竞品信息登记')">查看采集</button>
+        </div>
+      </td>
+    </tr>`}).join('')
+}
+
+// ===== 历史变化浮窗 =====
+function openHistory(asin){
+  let c=comp.find(x=>x.asin===asin);
+  if(!c) return;
+  $('#hTitle').textContent=`历史变化 — ${asin}`;
+  $('#hSub').textContent=`${c.store} · ${c.country} · ${c.space}/${c.category}`;
+
+  let allHistory=c.history||[];
+  let html=`
+    <div class="history-filters" id="hfBtns">
+      <button class="hf-btn on" data-range="all" onclick="filterHistory('${asin}','all',this)">全部</button>
+      <button class="hf-btn" data-range="7" onclick="filterHistory('${asin}','7',this)">近7天</button>
+      <button class="hf-btn" data-range="30" onclick="filterHistory('${asin}','30',this)">近30天</button>
+      <button class="hf-btn" data-range="90" onclick="filterHistory('${asin}','90',this)">近90天</button>
+    </div>
+    <div style="display:flex;gap:8px;margin-bottom:16px;font-size:12px;color:var(--muted)">
+      <span>共 ${allHistory.length} 条变动记录</span>
+      <span>·</span>
+      <span>按时间倒序排列</span>
+    </div>
+    <div id="historyTimeline">${renderTimeline(allHistory)}</div>
+  `;
+  $('#hBody').innerHTML=html;
+  openDrawer('historyDrawer');
+}
+
+function renderTimeline(history){
+  if(!history.length) return '<div class="empty-state"><p>该时间范围内暂无变动记录</p></div>';
+  const fieldIcons={title:'标题',bullet:'五点',price:'价格',image:'主图',rating:'评分'};
+  return `<div class="timeline">${history.map(h=>`
+    <div class="tl-item">
+      <div class="tl-dot ${h.type}"></div>
+      <div class="tl-time">${h.time}</div>
+      <div class="tl-field"><span class="tag b">${fieldIcons[h.type]||h.field}</span> ${h.field}变动</div>
+      <div class="tl-diff">
+        <div class="tl-old">${h.old}</div>
+        <div class="tl-arrow">→</div>
+        <div class="tl-new">${h.new}</div>
+      </div>
+    </div>`).join('')}</div>`
+}
+
+function filterHistory(asin,range,btn){
+  $$('.hf-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  let c=comp.find(x=>x.asin===asin);
+  if(!c) return;
+  let h=c.history||[];
+  if(range!=='all'){
+    let now=new Date('2026-06-25T10:00:00');
+    let cutoff=new Date(now.getTime()-parseInt(range)*86400000);
+    h=h.filter(x=>new Date(x.time)>=cutoff);
+  }
+  $('#historyTimeline').innerHTML=renderTimeline(h);
+}
+
+// ===== 竞品商品详情浮窗 =====
+function openProductDetail(asin){
+  let c=comp.find(x=>x.asin===asin);
+  if(!c||!c.detail) return;
+  let d=c.detail;
+  $('#pdTitle').textContent=`竞品商品详情 — ${asin}`;
+  $('#pdSub').textContent=`${c.store} · ${c.country} · ${c.space} / ${c.category}`;
+
+  // 星级渲染函数
+  function starsHtml(n){let s='';for(let i=1;i<=5;i++)s+=i<=n?'★':'☆';return s}
+
+  // 评论图片占位
+  function imgPlaceholders(count){
+    if(!count) return '';
+    const cls=['','p2','p3','p4'];
+    let imgs='';
+    for(let i=0;i<count;i++){
+      imgs+=`<div class="pd-review-img ${cls[i%4]}">图片 ${i+1}</div>`;
+    }
+    return `<div class="pd-review-images">${imgs}</div>`;
+  }
+
+  let html=`
+    <!-- 商品信息 -->
+    <div class="pd-section">
+      <div class="pd-section-title">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="3" stroke="var(--blue)" stroke-width="2"/><path d="M6 7h6M6 10h4" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"/></svg>
+        商品标题
+      </div>
+      <div class="pd-product-title">${d.title}</div>
+    </div>
+
+    <!-- 五点描述 -->
+    <div class="pd-section">
+      <div class="pd-section-title">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="5" cy="5" r="2" fill="var(--blue)"/><circle cx="5" cy="9" r="2" fill="var(--blue)"/><circle cx="5" cy="13" r="2" fill="var(--blue)"/><path d="M9 5h6M9 9h6M9 13h4" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        About this item（五点描述）
+      </div>
+      <ul class="pd-bullet-list">
+        ${d.bullets.map((b,i)=>`<li><b>第${i+1}点：</b>${b}</li>`).join('')}
+      </ul>
+    </div>
+
+    <!-- 商品属性 -->
+    ${c.attrs?`<div class="pd-section">
+      <div class="pd-section-title">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="3" width="14" height="12" rx="2" stroke="#0891b2" stroke-width="2"/><path d="M2 7h14M6 7v8" stroke="#0891b2" stroke-width="2"/></svg>
+        商品属性（Product Information）
+      </div>
+      <table class="pd-attr-table">
+        ${Object.entries(c.attrs||{}).map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join('')}
+      </table>
+    </div>`:''}
+
+    <!-- 价格与评分 -->
+    <div class="pd-price-row">
+      <div class="pd-price">${c.priceVal}</div>
+      <div class="pd-rating">
+        <span style="color:#f59e0b;font-size:16px">${starsHtml(Math.round(c.score))}</span>
+        <span>${c.score}</span>
+      </div>
+    </div>
+  `;
+
+  $('#pdBody').innerHTML=html;
+  openProductModal();
+}
+
+function openProductModal(){
+  $('#productModal').classList.add('show');
+  $('#mask').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeProductModal(){
+  $('#productModal').classList.remove('show');
+  $('#mask').classList.remove('show');
+  document.body.style.overflow='';
+}
+
+// ===== 竞品信息登记渲染 =====
+function renderComp(){
+  $('#cTotal').textContent=comp.length;
+  let todayChanges=comp.filter(x=>Object.values(x.mon).includes('changed-today')).length;
+  $('#cChanges').textContent=todayChanges;
+  $('#compRows').innerHTML=comp.map(x=>`<tr>
+    <td><span class="tag b">${x.country}</span></td>
+    <td><a>${x.asin}</a></td>
+    <td><a>${x.own}</a></td>
+    <td>${x.store}</td>
+    <td><span class="tag">${x.space}</span></td>
+    <td><span class="tag">${x.category}</span></td>
+    <td>${x.owner}</td>
+    <td><span class="tag ${x.status==='received'?'g':x.status==='failed'?'r':'o'}">${x.status==='received'?'已接收':x.status==='failed'?'接收失败':'待采集'}</span></td>
+    <td style="white-space:nowrap">${x.last}</td>
+    <td style="white-space:nowrap">
+      <button class="btn small" onclick="editComp('${x.asin}')">编辑</button>
+    </td>
+  </tr>`).join('')
+}
+
+function editComp(asin){
+  let c=comp.find(x=>x.asin===asin);
+  if(!c) return;
+  $('#editAsin').value=c.asin;
+  $('#editOwn').value=c.own;
+  $('#editStore').value=c.store;
+  $('#editSpace').value=c.space;
+  $('#editCat').value=c.category;
+  $('#editCompModal').classList.add('show');
+}
+
+// ===== 页面切换 =====
+function showPage(id){
+  $$('.sec').forEach(s=>s.classList.toggle('on',s.id==id));
+  let nav=$$(`.nav[data-p="${id}"]`)[0];
+  $$('.nav').forEach(n=>n.classList.toggle('on',n.dataset.p==id));
+  let sys=nav?.dataset.system||'voc';
+  $$('.system-title').forEach(n=>n.classList.toggle('on',n.dataset.system==sys));
+  let systemName=sys=='comp'?'竞品分析系统':'商品VOC系统';
+  let pageName=nav?.querySelector('span')?.textContent||'';
+  $('#crumb').textContent=`跨境业务 / ${systemName} / ${pageName}`;
+  if(id=='spu')renderSpu();if(id=='reviews')renderReviews();if(id=='insight')renderInsight();if(id=='competitor')renderComp();
+  window.scrollTo(0,0)
+}
+$$('.nav').forEach(n=>n.onclick=()=>showPage(n.dataset.p));
+$$('.system-title').forEach(n=>n.onclick=()=>showPage(n.dataset.system=='comp'?'insight':'dashboard'));
+
+// ===== 初始化 =====
+function init(){
+  renderDash();renderSpu();renderReviews();
+  $('#ownSel').innerHTML='<option value="">全部自营ASIN</option>'+[...new Set(comp.map(x=>x.own))].map(x=>`<option ${x===comp[0].own?'selected':''}>${x}</option>`).join('');
+  renderInsight();renderComp()
+}
+init();
+</script>
+</body>
+</html>
