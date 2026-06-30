@@ -10,7 +10,7 @@
 .drawer{position:fixed;right:-820px;top:0;bottom:0;width:820px;max-width:calc(100vw - 40px);background:#fff;box-shadow:-18px 0 40px rgba(0,0,0,.14);z-index:20;transition:.25s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column}.drawer.open{right:0}.dh{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-start;flex-shrink:0}.db{padding:20px;overflow-y:auto;flex:1}.x{border:0;background:#f3f4f6;width:34px;height:34px;border-radius:10px;font-size:18px;cursor:pointer}.x:hover{background:#e5e7eb}.mask{position:fixed;inset:0;background:rgba(17,24,39,.28);display:none;z-index:15}.mask.show{display:block}.box{border:1px solid #dbeafe;background:#f8fbff;border-radius:14px;padding:13px;margin:12px 0}.quote{border-left:4px solid var(--blue);background:#f9fafb;border-radius:10px;padding:10px;margin:8px 0;line-height:1.65}.kv{display:grid;grid-template-columns:92px 1fr;gap:10px;border-bottom:1px dashed #e5e7eb;padding:9px 0}.toast{position:fixed;right:24px;bottom:24px;background:#111827;color:#fff;padding:12px 16px;border-radius:12px;box-shadow:var(--shadow);opacity:0;transform:translateY(8px);transition:.18s;z-index:30}.toast.show{opacity:1;transform:none}.modal{position:fixed;inset:0;background:rgba(17,24,39,.35);z-index:25;display:none;place-items:center}.modal.show{display:grid}.modal-card{width:720px;max-width:calc(100vw - 40px);background:#fff;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}.mh{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}.mb{padding:18px}.textarea{width:100%;min-height:105px;border:1px solid var(--line);border-radius:12px;padding:12px;outline:none;font-family:inherit}.upload{border:2px dashed #bfdbfe;background:#eff6ff;border-radius:16px;padding:28px;text-align:center;color:#1d4ed8;font-weight:800}
 .mstat{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:8px;font-size:12px;font-weight:800}.mstat.unchanged{background:#f0fdf4;color:#166534}.mstat.changed-recent{background:#fff7ed;color:#9a3412}.mstat.changed-today{background:#fef2f2;color:#991b1b}.mstat .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}.mstat.unchanged .dot{background:#22c55e}.mstat.changed-recent .dot{background:#f97316}.mstat.changed-today .dot{background:#ef4444}
 .history-filters{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}.hf-btn{padding:6px 14px;border-radius:20px;border:1px solid var(--line);background:#fff;font-size:13px;font-weight:700;cursor:pointer;color:#4b5563;transition:.15s}.hf-btn:hover{border-color:#93c5fd}.hf-btn.on{background:var(--blue);color:#fff;border-color:var(--blue)}
-.timeline{position:relative;padding-left:24px}.timeline::before{content:'';position:absolute;left:7px;top:4px;bottom:4px;width:2px;background:#e5e7eb;border-radius:2px}.tl-item{position:relative;padding:0 0 20px 0}.tl-item:last-child{padding-bottom:0}.tl-dot{position:absolute;left:-20px;top:6px;width:12px;height:12px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 2px var(--blue)}.tl-dot.price{background:var(--blue)}.tl-dot.title{background:var(--violet)}.tl-dot.bullet{background:var(--orange)}.tl-dot.image{background:#06b6d4}.tl-dot.rating{background:var(--green)}.tl-dot.reviews{background:var(--violet)}.tl-time{font-size:12px;color:var(--muted);margin-bottom:4px}.tl-field{font-weight:800;font-size:14px;margin-bottom:6px;display:flex;align-items:center;gap:6px}.tl-diff{display:flex;gap:8px;align-items:flex-start;font-size:13px}.tl-old{background:#fef2f2;color:#991b1b;padding:4px 8px;border-radius:8px;flex:1;word-break:break-all;line-height:1.5}.tl-new{background:#f0fdf4;color:#166534;padding:4px 8px;border-radius:8px;flex:1;word-break:break-all;line-height:1.5}.tl-arrow{color:var(--muted);font-size:16px;flex-shrink:0;margin-top:2px}
+.timeline{position:relative}.timeline::before{display:none}.tl-item{position:relative;padding:0 0 20px 0}.tl-item:last-child{padding-bottom:0}.tl-dot{position:absolute;left:-20px;top:6px;width:12px;height:12px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 2px var(--blue)}.tl-dot.price{background:var(--blue)}.tl-dot.title{background:var(--violet)}.tl-dot.bullet{background:var(--orange)}.tl-dot.image{background:#06b6d4}.tl-dot.rating{background:var(--green)}.tl-dot.reviews{background:var(--violet)}.tl-time{font-size:12px;color:var(--muted);margin-bottom:4px}.tl-field{font-weight:800;font-size:14px;margin-bottom:6px;display:flex;align-items:center;gap:6px}.tl-diff{display:flex;gap:8px;align-items:flex-start;font-size:13px}.tl-old{background:#fef2f2;color:#991b1b;padding:4px 8px;border-radius:8px;flex:1;word-break:break-all;line-height:1.5}.tl-new{background:#f0fdf4;color:#166534;padding:4px 8px;border-radius:8px;flex:1;word-break:break-all;line-height:1.5}.tl-arrow{color:var(--muted);font-size:16px;flex-shrink:0;margin-top:2px}
 .log-list{display:flex;flex-direction:column;gap:10px}.log-item{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:#fafbfc;transition:.15s}.log-item:hover{border-color:#93c5fd;background:#f8fbff}.log-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.log-status{font-weight:800;font-size:13px;display:flex;align-items:center;gap:6px}.log-status .ldot{width:8px;height:8px;border-radius:50%}.log-status .ldot.ok{background:var(--green)}.log-status .ldot.fail{background:var(--red)}.log-status .ldot.pending{background:var(--orange)}.log-meta{display:flex;gap:16px;font-size:12px;color:var(--muted)}.log-detail{display:flex;gap:20px;font-size:13px;margin-top:6px;padding-top:8px;border-top:1px dashed var(--line)}
 .tab-bar{display:flex;gap:0;margin-bottom:16px;border-bottom:2px solid var(--line)}.tab-item{padding:10px 20px;font-weight:800;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:.15s}.tab-item:hover{color:var(--text)}.tab-item.on{color:var(--blue);border-bottom-color:var(--blue)}
 .pd-section{margin-bottom:24px}.pd-section-title{font-size:16px;font-weight:900;margin-bottom:12px;display:flex;align-items:center;gap:8px}
@@ -21,9 +21,14 @@
 .tip-wrap{position:relative}.tip-wrap:hover .tip-text{display:block}.tip-text{display:none;position:absolute;bottom:calc(100% + 6px);left:0;background:#111827;color:#fff;padding:10px 12px;border-radius:10px;font-size:12px;line-height:1.55;width:320px;z-index:10;box-shadow:0 8px 20px rgba(0,0,0,.22);font-weight:400;max-height:200px;overflow-y:auto;white-space:normal;word-break:break-word}.tip-text::after{content:'';position:absolute;top:100%;left:20px;border:6px solid transparent;border-top-color:#111827}
 .thumb{width:64px;height:64px;border-radius:10px;background:linear-gradient(135deg,#e8ddd0,#b09a82);display:grid;place-items:center;color:#fff;font-size:11px;font-weight:800;cursor:pointer;transition:.15s;border:2px solid transparent;flex-shrink:0}.thumb:hover{border-color:var(--blue);transform:scale(1.05)}.thumb.p2{background:linear-gradient(135deg,#d7e1ea,#7d92aa)}.thumb.p3{background:linear-gradient(135deg,#ede9d5,#b59a64)}.thumb.p4{background:linear-gradient(135deg,#e5ded4,#8f6b56)}
 .tl-dot.attrs{background:#0891b2}
+.tl-group{position:relative;padding-left:24px;margin-bottom:20px;border-left:2px solid #e5e7eb;margin-left:7px;padding-bottom:4px}.tl-group:last-child{margin-bottom:0}
+.tl-time-row{font-size:13px;color:var(--muted);font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px;position:relative}.tl-time-row::before{content:'';position:absolute;left:-29px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--blue);border:2px solid #fff;box-shadow:0 0 0 2px var(--blue)}
+.tl-multi-badge{display:inline-flex;align-items:center;gap:4px;padding:2px 10px;border-radius:20px;background:#fef3c7;color:#92400e;font-size:12px;font-weight:800;white-space:nowrap}
+.tl-group .tl-item{padding-left:0;position:relative}.tl-group .tl-item .tl-dot{display:none}.tl-group .tl-item .tl-time{display:none}
 .pd-attr-table{width:100%;border-collapse:collapse;border:1px solid var(--line);border-radius:12px;overflow:hidden}.pd-attr-table tr{border-bottom:1px solid var(--line)}.pd-attr-table tr:last-child{border-bottom:0}.pd-attr-table td{padding:10px 14px;font-size:14px}.pd-attr-table td:first-child{color:var(--muted);font-weight:700;width:160px;background:#f9fafb;white-space:nowrap}.pd-attr-table td:last-child{font-weight:600}
 .empty-state{text-align:center;padding:48px 20px;color:var(--muted)}.empty-state .empty-icon{font-size:48px;margin-bottom:12px;opacity:.3}.empty-state p{margin:4px 0;font-size:14px}
 .product-modal{position:fixed;inset:0;z-index:25;display:none;place-items:center}.product-modal.show{display:grid}.product-modal>.mask-bg{position:absolute;inset:0;background:rgba(17,24,39,.35)}.product-modal-card{position:relative;width:90vw;max-width:880px;max-height:90vh;background:#fff;border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.18);overflow:hidden;display:flex;flex-direction:column;animation:pmFadeIn .2s ease}.product-modal-card .dh{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-start;flex-shrink:0}.product-modal-card .db{padding:20px;overflow-y:auto;flex:1}@keyframes pmFadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.pd-gallery{display:flex;gap:12px;margin-bottom:20px}.pd-gallery-main{width:320px;height:320px;border-radius:14px;background:linear-gradient(135deg,#e8ddd0,#b09a82);display:grid;place-items:center;color:#fff;font-size:18px;font-weight:900;flex-shrink:0;position:relative;overflow:hidden;transition:background .2s}.pd-gallery-main.p2{background:linear-gradient(135deg,#d7e1ea,#7d92aa)}.pd-gallery-main.p3{background:linear-gradient(135deg,#ede9d5,#b59a64)}.pd-gallery-main.p4{background:linear-gradient(135deg,#e5ded4,#8f6b56)}.pd-gallery-thumbs{display:flex;flex-direction:column;gap:8px;overflow-y:auto;max-height:320px;padding-right:4px}.pd-gallery-thumb{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#e8ddd0,#b09a82);display:grid;place-items:center;color:#fff;font-size:9px;font-weight:800;cursor:pointer;border:2px solid transparent;transition:.15s;flex-shrink:0;text-align:center;line-height:1.2;padding:2px}.pd-gallery-thumb:hover,.pd-gallery-thumb.active{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue)}.pd-gallery-thumb.p2{background:linear-gradient(135deg,#d7e1ea,#7d92aa)}.pd-gallery-thumb.p3{background:linear-gradient(135deg,#ede9d5,#b59a64)}.pd-gallery-thumb.p4{background:linear-gradient(135deg,#e5ded4,#8f6b56)}.pd-gallery-info{flex:1;min-width:0}.pd-gallery-title{font-size:16px;font-weight:800;line-height:1.6;margin-bottom:10px}.pd-gallery-rating{display:flex;align-items:center;gap:8px;margin-bottom:12px;font-size:15px;font-weight:800}.pd-gallery-price{font-size:22px;font-weight:900;color:var(--red);margin-bottom:16px}
 @media(max-width:1200px){.grid2,.cards{grid-template-columns:1fr}.side{width:72px}.system-title{font-size:0;padding:10px 8px}.system-title:after{content:'业务';font-size:13px}.nav span,.nav-title{display:none}.nav.child{margin-left:12px}.main{margin-left:72px;width:calc(100% - 72px)}.top-nav{gap:0}.top-item{padding:8px 9px}.search input{width:220px}}
 </style>
 </head>
@@ -36,11 +41,10 @@
 <div class="nav child" data-p="spu" data-system="voc"><b class="ico">表</b><span>ASIN深度分析</span></div>
 <div class="nav child" data-p="reviews" data-system="voc"><b class="ico">评</b><span>评论明细</span></div>
 <div class="system-title" data-system="comp">竞品分析系统</div>
-<div class="nav child on" data-p="insight" data-system="comp"><b class="ico">察</b><span>竞品详情洞察</span></div>
-<div class="nav child" data-p="competitor" data-system="comp"><b class="ico">采</b><span>竞品信息登记</span></div>
+<div class="nav child on" data-p="insight" data-system="comp"><b class="ico">察</b><span>竞品分析</span></div>
 </aside>
 <main class="main">
-<header class="top" data-component="Top Navigation Bar"><div class="top-left"><div class="top-nav"><div class="top-item">首页</div><div class="top-item">VOC</div><div class="top-item on">跨境业务</div><div class="top-item">管理中心</div></div><div class="crumb" id="crumb">跨境业务 / 竞品分析系统 / 竞品详情洞察</div></div><div class="top-r"><div class="search"><input placeholder="搜索 ASIN / 问题标签 / 评论关键词"></div><button class="btn" onclick="toast('已刷新')">⟳ 刷新</button><div class="avatar">林</div></div></header>
+<header class="top" data-component="Top Navigation Bar"><div class="top-left"><div class="top-nav"><div class="top-item">首页</div><div class="top-item">VOC</div><div class="top-item on">跨境业务</div><div class="top-item">管理中心</div></div><div class="crumb" id="crumb">跨境业务 / 竞品分析系统</div></div><div class="top-r"><div class="search"><input placeholder="搜索 ASIN / 问题标签 / 评论关键词"></div><button class="btn" onclick="toast('已刷新')">⟳ 刷新</button><div class="avatar">林</div></div></header>
 <div class="page">
 
 <!-- ==================== VOC 评论总览 ==================== -->
@@ -66,41 +70,48 @@
 <div class="table-card"><div class="table-head"><b>评论列表</b><div><button class="btn small" onclick="toast('已批量AI分析')">批量AI分析</button></div></div><div class="table-wrap"><table class="wide"><thead><tr><th><input type="checkbox"></th><th>图片</th><th>国家/店铺</th><th>子ASIN</th><th>SKU</th><th>评论时间</th><th>买家</th><th>评分</th><th>标题</th><th>评论内容</th><th>有帮助数</th><th>问题标签</th><th>好评卖点</th><th>严重程度</th><th>操作</th></tr></thead><tbody id="reviewRows"></tbody></table></div></div>
 </section>
 
-<!-- ==================== 竞品详情洞察（含监控） ==================== -->
-<section id="insight" class="sec on" data-component="Competitor Insight and Monitoring">
+<!-- ==================== 竞品分析系统（合并页） ==================== -->
+<section id="insight" class="sec on" data-component="Competitor Analysis System">
 <div class="title">
-<div><h1>竞品分析系统 / 竞品详情洞察</h1><p>自营与竞品对比 + 竞品动态监控，追踪标题、五点、价格、主图、评分变化。</p></div>
+<div><h1>竞品分析系统</h1><p>自营与竞品对比 + 竞品动态监控，追踪标题、五点、价格、主图、评分变化。</p></div>
 <div style="display:flex;gap:8px">
-<button class="btn" onclick="toast('已导出竞品详情洞察')">⇩ 导出洞察</button>
-<button class="btn primary" onclick="toast('手动触发采集成功，数据将在1分钟后刷新')">⟳ 手动采集</button>
+<button class="btn" onclick="toast('已导出竞品分析数据')">⇩ 导出</button>
+<button class="btn" onclick="openImport()">批量导入</button>
+<button class="btn primary" onclick="openComp()">+ 新增竞品ASIN</button>
 </div>
 </div>
 
 <!-- 筛选栏 -->
 <div class="filters">
 <div class="field"><label>自营ASIN</label><select id="ownSel"></select></div>
+<div class="field"><label>竞品ASIN</label><input id="compAsinQ" placeholder="输入竞品ASIN"></div>
 <div class="field"><label>国家</label><select id="countryFilter" onchange="renderInsight()"><option value="">全部国家</option><option>US</option><option>UK</option><option>DE</option></select></div>
 <div class="field"><label>空间</label><select id="spaceFilter" onchange="renderInsight()"><option value="">全部空间</option><option>卧室</option><option>客厅</option><option>餐厅</option><option>书房</option><option>玄关</option><option>户外</option></select></div>
 <div class="field"><label>品类</label><select id="catFilter" onchange="renderInsight()"><option value="">全部品类</option><option>床</option><option>床头柜</option><option>衣柜</option><option>餐桌</option><option>沙发</option><option>茶几</option><option>书柜</option><option>餐椅</option></select></div>
-<button class="btn primary" onclick="renderInsight();toast('已刷新竞品详情洞察')">搜索</button>
-<button class="btn" onclick="$('#countryFilter').value='';$('#spaceFilter').value='';$('#catFilter').value='';renderInsight()">重置</button>
+<div class="field"><label>运营</label><select id="ownerFilter" onchange="renderInsight()"><option value="">全部运营</option><option>张雨晴</option><option>李明轩</option><option>陈思远</option><option>赵若安</option></select></div>
+<button class="btn primary" onclick="renderInsight();toast('已刷新')">搜索</button>
+<button class="btn" onclick="$('#countryFilter').value='';$('#spaceFilter').value='';$('#catFilter').value='';$('#ownerFilter').value='';$('#compAsinQ').value='';renderInsight()">重置</button>
 </div>
 
-<!-- 监控状态汇总条 -->
+<!-- 指标卡汇总 -->
 <div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap" data-component="Monitoring Summary">
-<div style="flex:1;min-width:180px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px">
+<div style="flex:1;min-width:160px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px">
+<div style="width:40px;height:40px;border-radius:10px;background:#dbeafe;display:grid;place-items:center"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="14" height="14" rx="3" stroke="var(--blue)" stroke-width="2"/><path d="M7 10h6M10 7v6" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"/></svg></div>
+<div><div class="label">已登记竞品ASIN</div><div style="font-size:24px;font-weight:900" id="cTotal">0</div></div>
+</div>
+<div style="flex:1;min-width:160px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px">
 <div style="width:40px;height:40px;border-radius:10px;background:var(--stat-green-bg);display:grid;place-items:center"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="10" width="4" height="8" rx="1" fill="var(--blue)"/><rect x="8" y="6" width="4" height="12" rx="1" fill="var(--blue)"/><rect x="14" y="2" width="4" height="16" rx="1" fill="var(--blue)"/></svg></div>
 <div><div class="label">监控竞品总数</div><div style="font-size:24px;font-weight:900" id="mTotal">0</div></div>
 </div>
-<div style="flex:1;min-width:180px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px">
+<div style="flex:1;min-width:160px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px">
 <div style="width:40px;height:40px;border-radius:10px;background:var(--stat-red-bg);display:grid;place-items:center"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="var(--red)" stroke-width="2.5"/><path d="M10 6v5" stroke="var(--red)" stroke-width="2.5" stroke-linecap="round"/><circle cx="10" cy="14" r="1.2" fill="var(--red)"/></svg></div>
 <div><div class="label">今日有变动</div><div style="font-size:24px;font-weight:900;color:var(--red)" id="mToday">0</div></div>
 </div>
-<div style="flex:1;min-width:180px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px">
+<div style="flex:1;min-width:160px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px">
 <div style="width:40px;height:40px;border-radius:10px;background:var(--stat-orange-bg);display:grid;place-items:center"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="var(--orange)" stroke-width="2.5"/><path d="M10 6v4l3 2" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
 <div><div class="label">近7天有变动</div><div style="font-size:24px;font-weight:900;color:var(--orange)" id="mWeek">0</div></div>
 </div>
-<div style="flex:1;min-width:180px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px">
+<div style="flex:1;min-width:160px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px">
 <div style="width:40px;height:40px;border-radius:10px;background:var(--stat-green-bg);display:grid;place-items:center"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="var(--green)" stroke-width="2.5"/><path d="M7 10l2.5 2.5L13 8" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
 <div><div class="label">暂无变动</div><div style="font-size:24px;font-weight:900;color:var(--green)" id="mStable">0</div></div>
 </div>
@@ -120,69 +131,21 @@
 <table class="wide">
 <thead>
 <tr>
-<th style="position:sticky;left:0;background:#fbfdff;z-index:2">自营ASIN</th>
-<th style="position:sticky;left:110px;background:#fbfdff;z-index:2">竞品ASIN</th>
+<th style="position:sticky;left:0;background:#fbfdff;z-index:2">主图</th>
+<th style="position:sticky;left:72px;background:#fbfdff;z-index:2">竞品ASIN</th>
+<th style="position:sticky;left:192px;background:#fbfdff;z-index:2">自营ASIN</th>
 <th>国家</th>
 <th>竞品店铺</th>
 <th>空间</th>
 <th>品类</th>
-<th>评分对比</th>
-<th>中差评率对比</th>
 <th>标题</th>
 <th>五点</th>
 <th>价格</th>
-<th>主图</th>
 <th>评分</th>
 <th>操作</th>
 </tr>
 </thead>
 <tbody id="insightRows"></tbody>
-</table>
-</div>
-</div>
-</section>
-
-<!-- ==================== 竞品信息登记 ==================== -->
-<section id="competitor" class="sec" data-component="Competitor Collection Management">
-<div class="title"><div><h1>竞品分析系统 / 竞品信息登记</h1><p>登记外部竞品ASIN，配置空间与品类信息，系统按固定频率采集商品数据并监控变化。</p></div><div><button class="btn" onclick="openImport()">批量导入</button> <button class="btn primary" onclick="openComp()">+ 新增竞品ASIN</button></div></div>
-<div class="filters">
-<div class="field"><label>国家</label><select><option>全部国家</option><option>US</option><option>UK</option><option>DE</option></select></div>
-<div class="field"><label>空间</label><select><option>全部空间</option><option>卧室</option><option>客厅</option><option>餐厅</option><option>书房</option><option>玄关</option><option>户外</option></select></div>
-<div class="field"><label>品类</label><select><option>全部品类</option><option>床</option><option>床头柜</option><option>衣柜</option><option>餐桌</option><option>沙发</option><option>茶几</option><option>书柜</option><option>餐椅</option></select></div>
-<div class="field"><label>店铺</label><input placeholder="输入店铺"></div>
-<div class="field"><label>运营</label><select><option>全部运营</option><option>张雨晴</option><option>李明轩</option><option>陈思远</option><option>赵若安</option></select></div>
-<div class="field"><label>ASIN</label><input placeholder="输入ASIN"></div>
-<button class="btn primary" onclick="toast('已筛选竞品采集表')">搜索</button>
-<button class="btn">重置</button>
-</div>
-
-<!-- 采集统计 -->
-<div class="cards" style="grid-template-columns:repeat(3,minmax(0,1fr))">
-<div class="card"><div class="label">已登记竞品ASIN</div><div class="num" id="cTotal">0</div></div>
-<div class="card"><div class="label">今日采集任务</div><div class="num" id="cTasks">4</div><div class="foot"><span class="green">成功 3</span> · <span class="red">失败 1</span></div></div>
-<div class="card"><div class="label">今日发现变动</div><div class="num" id="cChanges">0</div><div class="foot">已合并推送至钉钉通知群</div></div>
-</div>
-
-<!-- 采集管理表格 -->
-<div class="table-card">
-<div class="table-head"><b>竞品采集表</b><span class="foot">数据由RPA采集上传，采集状态由系统根据是否接收到数据判定</span></div>
-<div class="table-wrap">
-<table class="wide" style="min-width:1400px">
-<thead>
-<tr>
-<th>国家</th>
-<th>竞品ASIN</th>
-<th>对标自营ASIN</th>
-<th>竞品店铺</th>
-<th>空间</th>
-<th>品类</th>
-<th>对应运营</th>
-<th>采集状态</th>
-<th>最近同步</th>
-<th>操作</th>
-</tr>
-</thead>
-<tbody id="compRows"></tbody>
 </table>
 </div>
 </div>
@@ -308,10 +271,12 @@ const comp=[
   history:[
     {time:'2026-06-25 09:20',field:'标题',type:'title',old:'HOOBRO Industrial Coffee Table with Storage Shelf',new:'HOOBRO Coffee Table for Living Room, Industrial Style with Storage Shelf, Easy Assembly'},
     {time:'2026-06-25 09:20',field:'价格',type:'price',old:'$95.99',new:'$89.99'},
+    {time:'2026-06-25 09:20',field:'主图',type:'image',old:'主图A（白底正面）',new:'主图B（场景图-客厅）'},
     {time:'2026-06-23 09:15',field:'五点描述',type:'bullet',old:'第2点: Sturdy and durable construction with metal frame...',new:'第2点: Heavy-duty metal frame with reinforced joints, supports up to 150 lbs...'},
     {time:'2026-06-22 09:10',field:'评分',type:'rating',old:'4.21',new:'4.24'},
     {time:'2026-06-18 09:20',field:'标题',type:'title',old:'HOOBRO Coffee Table, Industrial Style',new:'HOOBRO Industrial Coffee Table with Storage Shelf'},
-    {time:'2026-06-15 09:10',field:'价格',type:'price',old:'$99.99',new:'$95.99'}
+    {time:'2026-06-18 09:20',field:'价格',type:'price',old:'$99.99',new:'$95.99'},
+    {time:'2026-06-15 09:10',field:'五点描述',type:'bullet',old:'第5点: 43.3 x 23.6 x 17.7 inches',new:'第5点: 43.3 x 23.6 x 17.7 inches, fits well in small apartments'}
   ],
   logs:[
     {time:'2026-06-25 09:20',status:'ok',duration:'2m 14s',newData:12,note:'全字段采集成功'},
@@ -331,6 +296,7 @@ const comp=[
       'Easy assembly with numbered parts and clear instructions, most users complete setup in under 20 minutes',
       'Dimensions: 43.3 x 23.6 x 17.7 inches, fits well in small apartments and compact spaces'
     ],
+    images:['主图-正面','场景图-客厅','细节-桌面','细节-支架','尺寸图','包装图'],
     reviews:[
       {name:'Sarah M.',stars:5,title:'Perfect coffee table for my small apartment',date:'June 18, 2026',variant:'Color: Walnut / Size: Standard',verified:true,
        body:'I was looking for something that would fit in my small living room and this table is perfect. The industrial look goes well with my decor. Assembly took about 15 minutes. Very sturdy and the storage shelf is great for books and magazines.',
@@ -377,6 +343,7 @@ const comp=[
       'Constructed with engineered wood and metal handles for durability, wipe-clean surface for easy maintenance',
       'Compact size: 15.7 x 15.7 x 21.6 inches, ideal for small bedrooms and tight spaces'
     ],
+    images:['主图-正面','场景图-卧室','细节-抽屉','侧面图','尺寸图'],
     reviews:[
       {name:'Emily T.',stars:5,title:'Love this little nightstand!',date:'June 20, 2026',variant:'Color: White / Size: Standard',verified:true,
        body:'Perfect size for my small bedroom. The drawer is smooth and holds all my bedtime essentials. Assembly was super easy — took me about 10 minutes. Looks great next to my bed.',
@@ -416,6 +383,7 @@ const comp=[
       'Each shelf holds up to 22 lbs, engineered wood panels are water-resistant and easy to clean',
       'Overall dimensions: 19.7 x 11.8 x 55.1 inches, vertical design saves floor space'
     ],
+    images:['主图-正面','场景图-书房','细节-层板','防倾倒套件','尺寸图','包装图'],
     reviews:[
       {name:'James W.',stars:5,title:'Beautiful display shelf',date:'June 8, 2026',variant:'Color: Rustic Brown',verified:true,
        body:'This bookshelf is a statement piece! Everyone who visits comments on it. Assembly took about 45 minutes but the instructions were clear. Holds all my books and plants perfectly.',
@@ -452,6 +420,7 @@ const comp=[
       'Compact loveseat size perfect for apartments, dorm rooms, and small living spaces',
       'Quick assembly — legs attach in minutes, no tools required. Dimensions: 65.4 x 30.7 x 32.7 inches'
     ],
+    images:['主图-沙发模式','场景图-客厅','靠背调节-3档','细节-绒面','尺寸图'],
     reviews:[
       {name:'Lisa P.',stars:5,title:'Great sofa for my studio apartment',date:'June 16, 2026',variant:'Color: Dark Grey / Size: Loveseat',verified:true,
        body:'This futon is perfect for my small space. The velvet is super soft and the dark grey color looks elegant. Converts to a bed easily when guests stay over. Very impressed for the price!',
@@ -524,11 +493,14 @@ function jumpToSpu(asin){$('#asinQ').value=asin;showPage('spu');renderSpu();toas
 function renderInsight(){
   let own=$('#ownSel').value||comp[0].own;
   let cf=$('#countryFilter').value, sf=$('#spaceFilter').value, catf=$('#catFilter').value;
+  let of=$('#ownerFilter')?.value||'', aq=$('#compAsinQ')?.value||'';
   let arr=comp.filter(x=>{
     if(x.own!==own) return false;
     if(cf&&x.country!==cf) return false;
     if(sf&&x.space!==sf) return false;
     if(catf&&x.category!==catf) return false;
+    if(of&&x.owner!==of) return false;
+    if(aq&&!x.asin.toLowerCase().includes(aq.toLowerCase())) return false;
     return true;
   });
 
@@ -537,6 +509,8 @@ function renderInsight(){
     if(cf&&x.country!==cf) return false;
     if(sf&&x.space!==sf) return false;
     if(catf&&x.category!==catf) return false;
+    if(of&&x.owner!==of) return false;
+    if(aq&&!x.asin.toLowerCase().includes(aq.toLowerCase())) return false;
     return true;
   })}
 
@@ -547,13 +521,14 @@ function renderInsight(){
   // recalc stable
   stableCount=arr.filter(x=>Object.values(x.mon).every(v=>v==='unchanged')).length;
 
+  $('#cTotal').textContent=comp.length;
   $('#mTotal').textContent=arr.length;
   $('#mToday').textContent=todayCount;
   $('#mWeek').textContent=weekCount;
   $('#mStable').textContent=stableCount;
 
   if(!arr.length){
-    $('#insightRows').innerHTML=`<tr><td colspan="14"><div class="empty-state"><div class="empty-icon" style="font-size:40px;opacity:.25"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="16" width="32" height="22" rx="3" stroke="#9ca3af" stroke-width="2.5"/><path d="M8 19l16 11 16-11" stroke="#9ca3af" stroke-width="2.5" stroke-linecap="round"/></svg></div><p>暂无匹配的竞品数据</p><p style="font-size:12px">请调整筛选条件或新增竞品ASIN</p></div></td></tr>`;
+    $('#insightRows').innerHTML=`<tr><td colspan="12"><div class="empty-state"><div class="empty-icon" style="font-size:40px;opacity:.25"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="16" width="32" height="22" rx="3" stroke="#9ca3af" stroke-width="2.5"/><path d="M8 19l16 11 16-11" stroke="#9ca3af" stroke-width="2.5" stroke-linecap="round"/></svg></div><p>暂无匹配的竞品数据</p><p style="font-size:12px">请调整筛选条件或新增竞品ASIN</p></div></td></tr>`;
     return;
   }
 
@@ -562,24 +537,21 @@ function renderInsight(){
     let imgClass=x.productImg||'thumb';
     let bulletLines=(x.bulletSummary||'').replace(/\\n/g,'&#10;');
     return `<tr>
-      <td style="position:sticky;left:0;background:#fff;z-index:1"><a>${x.own}</a></td>
-      <td style="position:sticky;left:110px;background:#fff;z-index:1"><a>${x.asin}</a></td>
+      <td style="position:sticky;left:0;background:#fff;z-index:1"><div class="${imgClass}" onclick="openProductDetail('${x.asin}')" title="点击查看详情">主图</div>${mstatTag(x.mon.image)}</td>
+      <td style="position:sticky;left:72px;background:#fff;z-index:1"><a>${x.asin}</a></td>
+      <td style="position:sticky;left:192px;background:#fff;z-index:1"><a>${x.own}</a></td>
       <td><span class="tag b">${x.country}</span></td>
       <td>${x.store}</td>
       <td><span class="tag">${x.space}</span></td>
       <td><span class="tag">${x.category}</span></td>
-      <td style="white-space:nowrap"><b>${o?.score||'--'}</b> <span style="color:#9ca3af">/</span> <b>${x.score}</b></td>
-      <td style="white-space:nowrap">${o?.bad||'--'} <span style="color:#9ca3af">/</span> ${x.bad}</td>
       <td style="min-width:200px"><div class="tip-wrap"><span style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:13px;line-height:1.5">${x.displayTitle||'--'}</span><div class="tip-text">${x.detail?.title||x.displayTitle||'--'}</div></div>${mstatTag(x.mon.title)}</td>
       <td style="min-width:180px"><div class="tip-wrap"><span style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:13px;line-height:1.5;white-space:pre-line">${x.bulletSummary?x.bulletSummary.substring(0,60)+'...':'--'}</span><div class="tip-text" style="white-space:pre-line">${bulletLines||'--'}</div></div>${mstatTag(x.mon.bullet)}</td>
       <td style="white-space:nowrap"><b>${x.priceVal}</b><br>${mstatTag(x.mon.price)}</td>
-      <td><div class="${imgClass}" onclick="openProductDetail('${x.asin}')" title="点击查看详情">主图</div>${mstatTag(x.mon.image)}</td>
       <td style="white-space:nowrap"><b>${x.ratingVal}</b><br>${mstatTag(x.mon.rating)}</td>
       <td>
         <div style="display:flex;flex-direction:column;gap:4px">
           <button class="btn small primary" onclick="openProductDetail('${x.asin}')">查看详情</button>
           <button class="btn small" onclick="openHistory('${x.asin}')">历史变化</button>
-          <button class="btn small" onclick="showPage('competitor');toast('已跳转到竞品信息登记')">查看采集</button>
         </div>
       </td>
     </tr>`}).join('')
@@ -614,17 +586,31 @@ function openHistory(asin){
 function renderTimeline(history){
   if(!history.length) return '<div class="empty-state"><p>该时间范围内暂无变动记录</p></div>';
   const fieldIcons={title:'标题',bullet:'五点',price:'价格',image:'主图',rating:'评分'};
-  return `<div class="timeline">${history.map(h=>`
-    <div class="tl-item">
-      <div class="tl-dot ${h.type}"></div>
-      <div class="tl-time">${h.time}</div>
-      <div class="tl-field"><span class="tag b">${fieldIcons[h.type]||h.field}</span> ${h.field}变动</div>
-      <div class="tl-diff">
-        <div class="tl-old">${h.old}</div>
-        <div class="tl-arrow">→</div>
-        <div class="tl-new">${h.new}</div>
-      </div>
-    </div>`).join('')}</div>`
+  // Group by timestamp
+  const groups=[];
+  let cur=null;
+  history.forEach(h=>{
+    if(cur&&cur.time===h.time){cur.items.push(h)}
+    else{cur={time:h.time,items:[h]};groups.push(cur)}
+  });
+  return `<div class="timeline">${groups.map(g=>{
+    const multi=g.items.length>1;
+    const badge=multi?`<span class="tl-multi-badge">${g.items.length}个字段同时变动</span>`:'';
+    return `
+    <div class="tl-group">
+      <div class="tl-time-row">${g.items[0].time}${badge}</div>
+      ${g.items.map(h=>`
+      <div class="tl-item">
+        <div class="tl-dot ${h.type}"></div>
+        <div class="tl-field"><span class="tag b">${fieldIcons[h.type]||h.field}</span> ${h.field}变动</div>
+        <div class="tl-diff">
+          <div class="tl-old">${h.old}</div>
+          <div class="tl-arrow">→</div>
+          <div class="tl-new">${h.new}</div>
+        </div>
+      </div>`).join('')}
+    </div>`;
+  }).join('')}</div>`
 }
 
 function filterHistory(asin,range,btn){
@@ -652,25 +638,29 @@ function openProductDetail(asin){
   // 星级渲染函数
   function starsHtml(n){let s='';for(let i=1;i<=5;i++)s+=i<=n?'★':'☆';return s}
 
-  // 评论图片占位
-  function imgPlaceholders(count){
-    if(!count) return '';
-    const cls=['','p2','p3','p4'];
-    let imgs='';
-    for(let i=0;i<count;i++){
-      imgs+=`<div class="pd-review-img ${cls[i%4]}">图片 ${i+1}</div>`;
-    }
-    return `<div class="pd-review-images">${imgs}</div>`;
-  }
+  // 图片颜色类
+  const imgCls=['','p2','p3','p4'];
+  let images=d.images||['主图'];
 
   let html=`
-    <!-- 商品信息 -->
-    <div class="pd-section">
-      <div class="pd-section-title">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="3" stroke="var(--blue)" stroke-width="2"/><path d="M6 7h6M6 10h4" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"/></svg>
-        商品标题
+    <!-- 图片画廊 + 商品信息 -->
+    <div class="pd-gallery">
+      <div class="pd-gallery-thumbs">
+        ${images.map((img,i)=>`<div class="pd-gallery-thumb ${imgCls[i%4]} ${i===0?'active':''}" onclick="switchGalleryImg(this,${i},'${asin}')">${img}</div>`).join('')}
       </div>
-      <div class="pd-product-title">${d.title}</div>
+      <div class="pd-gallery-main ${imgCls[0]}" id="pdGalleryMain">${images[0]}</div>
+      <div class="pd-gallery-info">
+        <div class="pd-gallery-title">${d.title}</div>
+        <div class="pd-gallery-rating">
+          <span style="color:#f59e0b;font-size:18px">${starsHtml(Math.round(c.score))}</span>
+          <span>${c.score}</span>
+        </div>
+        <div class="pd-gallery-price">${c.priceVal}</div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:8px">${c.store} · ${c.country}</div>
+        ${c.attrs?`<table class="pd-attr-table" style="font-size:13px">
+          ${Object.entries(c.attrs||{}).slice(0,4).map(([k,v])=>`<tr><td style="width:100px">${k}</td><td>${v}</td></tr>`).join('')}
+        </table>`:''}
+      </div>
     </div>
 
     <!-- 五点描述 -->
@@ -684,8 +674,8 @@ function openProductDetail(asin){
       </ul>
     </div>
 
-    <!-- 商品属性 -->
-    ${c.attrs?`<div class="pd-section">
+    <!-- 商品属性（完整） -->
+    ${c.attrs&&Object.keys(c.attrs).length>4?`<div class="pd-section">
       <div class="pd-section-title">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="3" width="14" height="12" rx="2" stroke="#0891b2" stroke-width="2"/><path d="M2 7h14M6 7v8" stroke="#0891b2" stroke-width="2"/></svg>
         商品属性（Product Information）
@@ -694,19 +684,23 @@ function openProductDetail(asin){
         ${Object.entries(c.attrs||{}).map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join('')}
       </table>
     </div>`:''}
-
-    <!-- 价格与评分 -->
-    <div class="pd-price-row">
-      <div class="pd-price">${c.priceVal}</div>
-      <div class="pd-rating">
-        <span style="color:#f59e0b;font-size:16px">${starsHtml(Math.round(c.score))}</span>
-        <span>${c.score}</span>
-      </div>
-    </div>
   `;
 
   $('#pdBody').innerHTML=html;
   openProductModal();
+}
+
+function switchGalleryImg(el,idx,asin){
+  let c=comp.find(x=>x.asin===asin);
+  if(!c||!c.detail) return;
+  let images=c.detail.images||['主图'];
+  let mainEl=document.getElementById('pdGalleryMain');
+  if(!mainEl) return;
+  const imgCls=['','p2','p3','p4'];
+  mainEl.className='pd-gallery-main '+imgCls[idx%4];
+  mainEl.textContent=images[idx];
+  document.querySelectorAll('.pd-gallery-thumb').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
 }
 
 function openProductModal(){
