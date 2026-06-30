@@ -487,11 +487,11 @@ function jumpToSpu(asin){$('#asinQ').value=asin;showPage('spu');renderSpu();toas
 
 // ===== 竞品详情洞察渲染 =====
 function renderInsight(){
-  let own=$('#ownSel').value||comp[0].own;
+  let own=$('#ownSel').value;
   let cf=$('#countryFilter').value, sf=$('#spaceFilter').value, catf=$('#catFilter').value;
   let of=$('#ownerFilter')?.value||'', aq=$('#compAsinQ')?.value||'';
   let arr=comp.filter(x=>{
-    if(x.own!==own) return false;
+    if(own&&x.own!==own) return false;
     if(cf&&x.country!==cf) return false;
     if(sf&&x.space!==sf) return false;
     if(catf&&x.category!==catf) return false;
@@ -499,16 +499,6 @@ function renderInsight(){
     if(aq&&!x.asin.toLowerCase().includes(aq.toLowerCase())) return false;
     return true;
   });
-
-  // 如果选了"全部自营ASIN"
-  if(!own||own===''){arr=comp.filter(x=>{
-    if(cf&&x.country!==cf) return false;
-    if(sf&&x.space!==sf) return false;
-    if(catf&&x.category!==catf) return false;
-    if(of&&x.owner!==of) return false;
-    if(aq&&!x.asin.toLowerCase().includes(aq.toLowerCase())) return false;
-    return true;
-  })}
 
   // 统计
   let todayCount=arr.filter(x=>Object.values(x.mon).includes('changed-today')).length;
@@ -756,7 +746,7 @@ $$('.system-title').forEach(n=>n.onclick=()=>showPage(n.dataset.system=='comp'?'
 // ===== 初始化 =====
 function init(){
   renderDash();renderSpu();renderReviews();
-  $('#ownSel').innerHTML='<option value="">全部自营ASIN</option>'+[...new Set(comp.map(x=>x.own))].map(x=>`<option ${x===comp[0].own?'selected':''}>${x}</option>`).join('');
+  $('#ownSel').innerHTML='<option value="">全部自营ASIN</option>'+[...new Set(comp.map(x=>x.own))].map(x=>`<option>${x}</option>`).join('');
   renderInsight()
 }
 init();
