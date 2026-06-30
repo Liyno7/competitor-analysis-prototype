@@ -89,8 +89,9 @@
 <div class="field"><label>空间</label><select id="spaceFilter" onchange="renderInsight()"><option value="">全部空间</option><option>卧室</option><option>客厅</option><option>餐厅</option><option>书房</option><option>玄关</option><option>户外</option></select></div>
 <div class="field"><label>品类</label><select id="catFilter" onchange="renderInsight()"><option value="">全部品类</option><option>床</option><option>床头柜</option><option>衣柜</option><option>餐桌</option><option>沙发</option><option>茶几</option><option>书柜</option><option>餐椅</option></select></div>
 <div class="field"><label>运营</label><select id="ownerFilter" onchange="renderInsight()"><option value="">全部运营</option><option>张雨晴</option><option>李明轩</option><option>陈思远</option><option>赵若安</option></select></div>
+<div class="field"><label>采集状态</label><select id="statusFilter" onchange="renderInsight()"><option value="">全部状态</option><option value="received">已接收</option><option value="dispatched">已派发</option><option value="failed">接收失败</option><option value="pending">待采集</option></select></div>
 <button class="btn primary" onclick="renderInsight();toast('已刷新')">搜索</button>
-<button class="btn" onclick="$('#countryFilter').value='';$('#spaceFilter').value='';$('#catFilter').value='';$('#ownerFilter').value='';$('#compAsinQ').value='';renderInsight()">重置</button>
+<button class="btn" onclick="$('#countryFilter').value='';$('#spaceFilter').value='';$('#catFilter').value='';$('#ownerFilter').value='';$('#compAsinQ').value='';$('#statusFilter').value='';renderInsight()">重置</button>
 </div>
 
 <!-- 指标卡汇总 -->
@@ -138,6 +139,8 @@
 <th>五点</th>
 <th>价格</th>
 <th>评分</th>
+<th>采集状态</th>
+<th>最近同步时间</th>
 <th>操作</th>
 </tr>
 </thead>
@@ -490,6 +493,7 @@ function renderInsight(){
   let own=$('#ownSel').value;
   let cf=$('#countryFilter').value, sf=$('#spaceFilter').value, catf=$('#catFilter').value;
   let of=$('#ownerFilter')?.value||'', aq=$('#compAsinQ')?.value||'';
+  let stf=$('#statusFilter')?.value||'';
   let arr=comp.filter(x=>{
     if(own&&x.own!==own) return false;
     if(cf&&x.country!==cf) return false;
@@ -497,6 +501,7 @@ function renderInsight(){
     if(catf&&x.category!==catf) return false;
     if(of&&x.owner!==of) return false;
     if(aq&&!x.asin.toLowerCase().includes(aq.toLowerCase())) return false;
+    if(stf&&x.status!==stf) return false;
     return true;
   });
 
@@ -513,14 +518,17 @@ function renderInsight(){
   $('#mStable').textContent=stableCount;
 
   if(!arr.length){
-    $('#insightRows').innerHTML=`<tr><td colspan="12"><div class="empty-state"><div class="empty-icon" style="font-size:40px;opacity:.25"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="16" width="32" height="22" rx="3" stroke="#9ca3af" stroke-width="2.5"/><path d="M8 19l16 11 16-11" stroke="#9ca3af" stroke-width="2.5" stroke-linecap="round"/></svg></div><p>暂无匹配的竞品数据</p><p style="font-size:12px">请调整筛选条件或新增竞品ASIN</p></div></td></tr>`;
+    $('#insightRows').innerHTML=`<tr><td colspan="14"><div class="empty-state"><div class="empty-icon" style="font-size:40px;opacity:.25"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="16" width="32" height="22" rx="3" stroke="#9ca3af" stroke-width="2.5"/><path d="M8 19l16 11 16-11" stroke="#9ca3af" stroke-width="2.5" stroke-linecap="round"/></svg></div><p>暂无匹配的竞品数据</p><p style="font-size:12px">请调整筛选条件或新增竞品ASIN</p></div></td></tr>`;
     return;
   }
+
+  const statusMap={received:['已接收','g'],dispatched:['已派发','b'],failed:['接收失败','r'],pending:['待采集','o']};
 
   $('#insightRows').innerHTML=arr.map(x=>{
     let o=spu.find(s=>s.asin==x.own);
     let imgClass=x.productImg||'thumb';
     let bulletLines=(x.bulletSummary||'').replace(/\\n/g,'&#10;');
+    let[sLabel,sCls]=statusMap[x.status]||['未知',''];
     return `<tr>
       <td style="position:sticky;left:0;background:#fff;z-index:1"><div class="${imgClass}" onclick="openProductDetail('${x.asin}')" title="点击查看详情">主图</div>${mstatTag(x.mon.image)}</td>
       <td style="position:sticky;left:72px;background:#fff;z-index:1"><a>${x.asin}</a></td>
@@ -533,6 +541,8 @@ function renderInsight(){
       <td style="min-width:180px"><div class="tip-wrap"><span style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:13px;line-height:1.5;white-space:pre-line">${x.bulletSummary?x.bulletSummary.substring(0,60)+'...':'--'}</span><div class="tip-text" style="white-space:pre-line">${bulletLines||'--'}</div></div>${mstatTag(x.mon.bullet)}</td>
       <td style="white-space:nowrap"><b>${x.priceVal}</b><br>${mstatTag(x.mon.price)}</td>
       <td style="white-space:nowrap"><b>${x.ratingVal}</b><br>${mstatTag(x.mon.rating)}</td>
+      <td><span class="tag ${sCls}">${sLabel}</span></td>
+      <td style="white-space:nowrap;font-size:12px;color:var(--muted)">${x.last||'--'}</td>
       <td>
         <div style="display:flex;flex-direction:column;gap:4px">
           <button class="btn small primary" onclick="openProductDetail('${x.asin}')">查看详情</button>
