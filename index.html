@@ -757,7 +757,7 @@ $$('.system-title').forEach(n=>n.onclick=()=>showPage(n.dataset.system=='comp'?'
 function init(){
   renderDash();renderSpu();renderReviews();
   $('#ownSel').innerHTML='<option value="">全部自营ASIN</option>'+[...new Set(comp.map(x=>x.own))].map(x=>`<option ${x===comp[0].own?'selected':''}>${x}</option>`).join('');
-  renderInsight();renderComp()
+  renderInsight()
 }
 init();
 </script>
