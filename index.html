@@ -590,20 +590,20 @@ function renderTimeline(history){
   });
   return `<div class="timeline">${groups.map(g=>{
     const multi=g.items.length>1;
-    const badge=multi?`<span class="tl-multi-badge">${g.items.length}个字段同时变动</span>`:'';
+    const fieldTags=g.items.map(h=>`<span class="tag b">${fieldIcons[h.type]||h.field}</span>`).join(' ');
+    const fieldLabel=multi?g.items.map(h=>h.field).join('、'):g.items[0].field;
     return `
     <div class="tl-group">
-      <div class="tl-time-row">${g.items[0].time}${badge}</div>
-      ${g.items.map(h=>`
+      <div class="tl-time-row">${g.items[0].time}</div>
       <div class="tl-item">
-        <div class="tl-dot ${h.type}"></div>
-        <div class="tl-field"><span class="tag b">${fieldIcons[h.type]||h.field}</span> ${h.field}变动</div>
+        <div class="tl-field">${fieldTags} ${fieldLabel}变动</div>
+        ${g.items.map(h=>`
         <div class="tl-diff">
           <div class="tl-old">${h.old}</div>
           <div class="tl-arrow">→</div>
           <div class="tl-new">${h.new}</div>
-        </div>
-      </div>`).join('')}
+        </div>`).join('')}
+      </div>
     </div>`;
   }).join('')}</div>`
 }
