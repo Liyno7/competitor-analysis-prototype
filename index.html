@@ -579,9 +579,8 @@ function renderTimeline(history){
     else{cur={time:h.time,items:[h]};groups.push(cur)}
   });
   return `<div class="timeline">${groups.map(g=>{
-    const multi=g.items.length>1;
     const fieldTags=g.items.map(h=>`<span class="tag b">${fieldIcons[h.type]||h.field}</span>`).join(' ');
-    const fieldLabel=multi?g.items.map(h=>h.field).join('、'):g.items[0].field;
+    const fieldLabel=g.items.length>1?g.items.map(h=>h.field).join('、'):g.items[0].field;
     return `
     <div class="tl-group">
       <div class="tl-time-row">${g.items[0].time}</div>
@@ -641,7 +640,10 @@ function openProductDetail(asin){
           <span>${c.score}</span>
         </div>
         <div class="pd-gallery-price">${c.priceVal}</div>
-        <div style="font-size:13px;color:var(--muted)">${c.store} · ${c.country}</div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:8px">${c.store} · ${c.country}</div>
+        ${c.attrs?`<table class="pd-attr-table" style="font-size:13px">
+          ${Object.entries(c.attrs||{}).slice(0,4).map(([k,v])=>`<tr><td style="width:100px">${k}</td><td>${v}</td></tr>`).join('')}
+        </table>`:''}
       </div>
     </div>
 
@@ -656,14 +658,14 @@ function openProductDetail(asin){
       </ul>
     </div>
 
-    <!-- 商品属性 -->
-    ${c.attrs?`<div class="pd-section">
+    <!-- 商品属性（完整） -->
+    ${c.attrs&&Object.keys(c.attrs).length>4?`<div class="pd-section">
       <div class="pd-section-title">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="3" width="14" height="12" rx="2" stroke="#0891b2" stroke-width="2"/><path d="M2 7h14M6 7v8" stroke="#0891b2" stroke-width="2"/></svg>
-        Product Information（商品属性）
+        商品属性（Product Information）
       </div>
       <table class="pd-attr-table">
-        ${Object.entries(c.attrs||{}).map(([k,v])=>\`<tr><td>\${k}</td><td>\${v}</td></tr>\`).join('')}
+        ${Object.entries(c.attrs||{}).map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join('')}
       </table>
     </div>`:''}
   `;
@@ -698,6 +700,7 @@ function closeProductModal(){
 
 // ===== 竞品信息登记渲染 =====
 function renderComp(){
+  $('#cTotal').textContent=comp.length;
   let todayChanges=comp.filter(x=>Object.values(x.mon).includes('changed-today')).length;
   $('#cChanges').textContent=todayChanges;
   $('#compRows').innerHTML=comp.map(x=>`<tr>
@@ -737,7 +740,7 @@ function showPage(id){
   let systemName=sys=='comp'?'竞品分析系统':'商品VOC系统';
   let pageName=nav?.querySelector('span')?.textContent||'';
   $('#crumb').textContent=`跨境业务 / ${systemName} / ${pageName}`;
-  if(id=='spu')renderSpu();if(id=='reviews')renderReviews();if(id=='insight')renderInsight();if(id=='competitor')renderComp();
+  if(id=='spu')renderSpu();if(id=='reviews')renderReviews();if(id=='insight')renderInsight();
   window.scrollTo(0,0)
 }
 $$('.nav').forEach(n=>n.onclick=()=>showPage(n.dataset.p));
